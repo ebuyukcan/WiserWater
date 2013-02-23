@@ -4,14 +4,24 @@ window.WiserWater.InputView = Backbone.View.extend
         @template = _.template WiserWater.tpl.get('input')
         return @
 
-    #events:
-    #    "click .close" : "onCloseView"
+    events:
+        "click #cameraButton" : "onCameraPressed"
+        "click #phButton" : "onPhPressed"
+        "click #oxygenButton" : "onOxygenPressed"
 
     render: ->
         $(@el).html @template
             title: "Test your water"
         return @
     
-    #onCloseView: (args) ->
-    #    args.preventDefault()
-    #    GroundUp.app.navigateMapView()
+    onCameraPressed: (args) ->
+        args.preventDefault()
+        WiserWater.app.renderCamera()
+		
+    onPhPressed: (args) ->
+        args.preventDefault()
+        WiserWater.app.renderPh()
+		
+    onOxygenPressed: (args) ->
+        args.preventDefault()
+        WiserWater.app.renderOxygen()
