@@ -14,7 +14,6 @@ window.WiserWater.CameraView = Backbone.View.extend({
   },
   snapPhoto: function() {
     var canvas, context, errBack, video, videoObj;
-    console.debug("blaaa!!!!!!!");
     canvas = document.getElementById("canvas");
     context = canvas.getContext("2d");
     video = document.getElementById("video");

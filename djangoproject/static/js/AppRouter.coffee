@@ -10,6 +10,10 @@ AppRouter = Backbone.Router.extend
     "": "renderHome"
     "input": "renderInput"
     "lake": "renderLake"
+    "profile": "renderProfile"
+    "searchmap": "renderSearchByMap"
+    "searchname": "renderSearchByName"
+
 
   renderHome: ->
     console.debug "Rendering home"
@@ -34,6 +38,21 @@ AppRouter = Backbone.Router.extend
   #     return@
     #console.debug "Rendering lake view"
 
+  renderProfile: ->
+    console.debug "Rendering profile"
+    @setPage $("#content"), new WiserWater.ProfileView()
+    return @	
+
+  renderSearchByMap: ->
+    console.debug "Rendering search by map"
+    @setPage $("#content"), new WiserWater.SearchByMapView()
+    return @	
+
+  renderSearchByName: ->
+    console.debug "Rendering search by name"
+    @setPage $("#content"), new WiserWater.SearchByNameView()
+    return @	
+
   renderCamera: ->
     console.debug "Rendering camera"
     view =  new WiserWater.CameraView()
@@ -41,6 +60,12 @@ AppRouter = Backbone.Router.extend
     console.debug view
     view.snapPhoto()
     return @
+
+  renderOxygen: ->
+    console.debug "Rendering oxygen"
+    @setPage $("#content"), new WiserWater.OxygenView()
+    return @
+
 	
   setPage: (target, view, header, footer) ->
     # Changes the page using the backbone framework, no transitions
