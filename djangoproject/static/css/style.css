@@ -1,16 +1,32 @@
-.ui-icon-home {
-	background-image: url("../img/logo_header100x60.png");
-	background-size: 100px 60px;
+#home .ui-icon {
+    width: 100px!important; 
+	background: url("../img/logo_header100x60.png");
 }
-.ui-icon-input {
-	background-image: url("../img/input_icon_header60.png");
-    background-size: 100px 60px;
+
+#input .ui-icon {
+    width: 60px!important; 
+    background-image: url("../img/input_icon_header60.png");
 }
-.ui-icon-navigation {
-	background-image: url("../img/down_arrow_header60.png");
-    background-size: 100px 60px;
+
+#navigation .ui-icon {
+    width: 60px!important; 
+    background-image: url("../img/down_arrow_header60.png");
 }
 
 #header {
-	height: 54px;
+	height: 70px;
+}
+
+.nav-glyphish-example .ui-btn .ui-btn-inner {
+    padding-top: 60px !important; 
+}
+
+.nav-glyphish-example .ui-btn .ui-icon { 
+    height: 60px!important; 
+    margin-left: -24px !important; 
+    box-shadow: none!important; 
+    -moz-box-shadow: none!important; 
+    -webkit-box-shadow: none!important;
+    -webkit-border-radius: none !important;
+    border-radius: none !important; 
 }

@@ -14,6 +14,7 @@ AppRouter = Backbone.Router.extend
     "searchmap": "renderSearchByMap"
     "searchname": "renderSearchByName"
 
+
   renderHome: ->
     console.debug "Rendering home"
     @setPage $("#content"), new WiserWater.HomeView()
