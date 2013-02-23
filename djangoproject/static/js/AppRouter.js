@@ -12,12 +12,20 @@ AppRouter = Backbone.Router.extend({
   },
   renderHome: function() {
     console.debug("Rendering home");
-    this.setPage($("#home"), new WiserWater.HomeView());
+    this.setPage($("#page"), new WiserWater.HomeView());
     return this;
   },
   setPage: function(target, view) {
     if (view != null) {
       return target.html($(view.render().el));
     }
+  },
+  changePageJQM: function(page) {
+    $(page.el).attr('data-role', 'page');
+    page.render;
+    $('body').append($(page.el));
+    return $.mobile.changePage($(page.el), {
+      changeHash: false
+    });
   }
 });
