@@ -18,7 +18,9 @@ AppRouter = Backbone.Router.extend({
     return this;
   },
   renderInput: function() {
-    return console.debug("Rendering input");
+    console.debug("Rendering input");
+    this.setPage($("#content"), new WiserWater.InputView());
+    return this;
   },
   renderNavigate: function() {
     return console.debug("Rendering navigate");

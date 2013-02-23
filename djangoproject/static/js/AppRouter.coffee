@@ -18,6 +18,8 @@ AppRouter = Backbone.Router.extend
 
   renderInput: ->
     console.debug "Rendering input"
+    @setPage $("#content"), new WiserWater.InputView()
+    return @	
 
   renderNavigate: ->
     console.debug "Rendering navigate"

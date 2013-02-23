@@ -1,4 +1,4 @@
-window.WiserWater.HomeView = Backbone.View.extend
+window.WiserWater.InputView = Backbone.View.extend
 
     initialize: (options) ->
         @template = _.template WiserWater.tpl.get('input')
