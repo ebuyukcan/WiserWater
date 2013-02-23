@@ -155,3 +155,10 @@ LOGGING = {
         },
     }
 }
+
+#Fixing the haystack issue
+HAYSTACK_SITECONF = 'djangoproject.search_sites'
+#If you choose whoosh as search backend uncomment following 2 lines and comment last 2 lines
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+#HAYSTACK_WHOOSH_PATH = '/home/xyz/django_projects/index'
+
