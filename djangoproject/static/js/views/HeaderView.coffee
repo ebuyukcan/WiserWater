@@ -23,4 +23,4 @@ window.WiserWater.HeaderView = Backbone.View.extend
 
      onNavigateClick: (args) ->
         args.preventDefault()
-        WiserWater.app.renderNavigate()
+        $(document.body).scrollTop($('#footer').offset().top);
