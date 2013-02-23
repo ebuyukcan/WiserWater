@@ -9,6 +9,34 @@ window.WiserWater.CameraView = Backbone.View.extend({
     $(this.el).html(this.template({
       title: "Take a photo of your water"
     }));
+    $(this.el).onload = this.snapPhoto;
     return this;
+  },
+  snapPhoto: function() {
+    var canvas, context, errBack, video, videoObj;
+    console.debug("blaaa!!!!!!!");
+    canvas = document.getElementById("canvas");
+    context = canvas.getContext("2d");
+    video = document.getElementById("video");
+    videoObj = {
+      video: true
+    };
+    errBack = function(error) {
+      return console.log("Video capture error: ", error.code);
+    };
+    if (navigator.getUserMedia) {
+      navigator.getUserMedia(videoObj, (function(stream) {
+        video.src = stream;
+        return video.play();
+      }), errBack);
+    } else if (navigator.webkitGetUserMedia) {
+      navigator.webkitGetUserMedia(videoObj, (function(stream) {
+        video.src = window.webkitURL.createObjectURL(stream);
+        return video.play();
+      }), errBack);
+    }
+    return document.getElementById("snap").addEventListener("click", function() {
+      return context.drawImage(video, 0, 0, 640, 480);
+    });
   }
 });
