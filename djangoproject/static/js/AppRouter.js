@@ -17,8 +17,7 @@ AppRouter = Backbone.Router.extend({
   },
   setPage: function(target, view) {
     if (view != null) {
-      target.html($(view.render().el));
-      return utils.setVisibility(target[0], true);
+      return target.html($(view.render().el));
     }
   }
 });

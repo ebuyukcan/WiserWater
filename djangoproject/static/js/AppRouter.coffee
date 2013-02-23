@@ -17,4 +17,3 @@ AppRouter = Backbone.Router.extend
   setPage: (target, view) ->
         if view?
             target.html $(view.render().el)
-            utils.setVisibility target[0], true
