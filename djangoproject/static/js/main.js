@@ -26,7 +26,7 @@ Backbone.View.prototype.back = function(event) {
   return window.history.back();
 };
 
-WiserWater.tpl.loadTemplates(["home"], function() {
+WiserWater.tpl.loadTemplates(["home", "footer", "header"], function() {
   WiserWater.app = new AppRouter();
   return Backbone.history.start();
 });

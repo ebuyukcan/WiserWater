@@ -11,5 +11,10 @@ AppRouter = Backbone.Router.extend
 
   renderHome: ->
     console.debug "Rendering home"
-    # Here we will need to call a view
+    @setPage $("#home"), new WiserWater.HomeView()
     return @
+
+  setPage: (target, view) ->
+        if view?
+            target.html $(view.render().el)
+            utils.setVisibility target[0], true

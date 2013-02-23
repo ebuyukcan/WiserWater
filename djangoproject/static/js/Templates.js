@@ -10,8 +10,6 @@ Templates = (function() {
   Templates.prototype.loadTemplates = function(names, callback) {
     var loadTemplate,
       _this = this;
-    callback();
-    return this;
     if (!debug) {
       callback();
       return this;

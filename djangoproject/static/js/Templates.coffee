@@ -7,10 +7,6 @@ class Templates
   # concatenated in a single file.
   
   loadTemplates: (names, callback) ->
-    # Hack to get around Access-Control-Allow-Origin -- Not loading any templates
-    callback()
-    return @
-    
     unless debug
       callback()
       return @

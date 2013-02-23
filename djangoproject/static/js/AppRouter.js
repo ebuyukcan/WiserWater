@@ -12,6 +12,13 @@ AppRouter = Backbone.Router.extend({
   },
   renderHome: function() {
     console.debug("Rendering home");
+    this.setPage($("#home"), new WiserWater.HomeView());
     return this;
+  },
+  setPage: function(target, view) {
+    if (view != null) {
+      target.html($(view.render().el));
+      return utils.setVisibility(target[0], true);
+    }
   }
 });

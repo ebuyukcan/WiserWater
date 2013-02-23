@@ -18,7 +18,7 @@ Backbone.View::back = (event) ->
 
 # Entry point of the app
 WiserWater.tpl.loadTemplates(
-    [ "home" ],
+    [ "home", "footer", "header" ],
     () ->
         WiserWater.app = new AppRouter()
         Backbone.history.start()
