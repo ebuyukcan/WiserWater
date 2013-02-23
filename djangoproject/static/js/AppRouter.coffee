@@ -8,17 +8,35 @@ AppRouter = Backbone.Router.extend
 
   routes:
     "": "renderHome"
+    "input": "renderInput"
 
   renderHome: ->
     console.debug "Rendering home"
-    @setPage $("#page"), new WiserWater.HomeView()
+    @setPage $("#content"), new WiserWater.HomeView()
     return @
 
-  setPage: (target, view) ->
-        # Changes the page using the backbone framework, no transitions
-        if view?
-            target.html $(view.render().el)
-            target.trigger("create")
+  renderInput: ->
+    console.debug "Rendering input"
+
+  renderNavigate: ->
+    console.debug "Rendering navigate"
+
+  renderLakeView: (lakeId) ->
+    if not lakeId
+      console.debug "Invalid lake id"
+      return@
+
+    console.debug "Rendering lake view"
+
+  setPage: (target, view, header, footer) ->
+    # Changes the page using the backbone framework, no transitions
+    header ?= new WiserWater.HeaderView()
+    footer ?= new WiserWater.FooterView()
+    $("#header").html(header.render().el).trigger("create")
+    $("#footer").html(footer.render().el).trigger("create")
+    if view?
+      target.html $(view.render().el)
+      target.trigger("create")
 
   changePageJQM: (page) ->
         # Not working :( Changes the page using the JQM framework, having the nice transitions

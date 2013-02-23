@@ -8,14 +8,36 @@ AppRouter = Backbone.Router.extend({
     return console.debug("Initialized AppRouter");
   },
   routes: {
-    "": "renderHome"
+    "": "renderHome",
+    "input": "renderInput"
   },
   renderHome: function() {
     console.debug("Rendering home");
-    this.setPage($("#page"), new WiserWater.HomeView());
+    this.setPage($("#content"), new WiserWater.HomeView());
     return this;
   },
-  setPage: function(target, view) {
+  renderInput: function() {
+    return console.debug("Rendering input");
+  },
+  renderNavigate: function() {
+    return console.debug("Rendering navigate");
+  },
+  renderLakeView: function(lakeId) {
+    if (!lakeId) {
+      console.debug("Invalid lake id");
+      return this;
+    }
+    return console.debug("Rendering lake view");
+  },
+  setPage: function(target, view, header, footer) {
+    if (header == null) {
+      header = new WiserWater.HeaderView();
+    }
+    if (footer == null) {
+      footer = new WiserWater.FooterView();
+    }
+    $("#header").html(header.render().el).trigger("create");
+    $("#footer").html(footer.render().el).trigger("create");
     if (view != null) {
       target.html($(view.render().el));
       return target.trigger("create");
