@@ -6,9 +6,7 @@ window.WiserWater.HomeView = Backbone.View.extend({
     return this;
   },
   render: function() {
-    $(this.el).html(this.template({
-      title: "testsdfasd"
-    }));
+    $(this.el).html(this.template());
     return this;
   }
 });

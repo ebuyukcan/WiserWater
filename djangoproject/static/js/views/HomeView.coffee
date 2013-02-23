@@ -8,8 +8,7 @@ window.WiserWater.HomeView = Backbone.View.extend
     #    "click .close" : "onCloseView"
 
     render: ->
-        $(@el).html @template
-            title: "testsdfasd"
+        $(@el).html @template()
         return @
     
     #onCloseView: (args) ->
