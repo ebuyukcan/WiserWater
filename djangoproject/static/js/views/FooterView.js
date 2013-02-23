@@ -5,8 +5,23 @@ window.WiserWater.FooterView = Backbone.View.extend({
     this.template = _.template(WiserWater.tpl.get('footer'));
     return this;
   },
+  events: {
+    "click .homeButton": "onHomeClick"
+  },
   render: function() {
     $(this.el).html(this.template());
     return this;
+  },
+  onHomeClick: function(args) {
+    args.preventDefault();
+    return WiserWater.app.renderHome();
+  },
+  onSearchClick: function(args) {
+    args.preventDefault();
+    return WiserWater.app.renderSearch();
+  },
+  onProfileClick: function(args) {
+    args.preventDefault();
+    return WiserWater.app.renderProfile();
   }
 });
