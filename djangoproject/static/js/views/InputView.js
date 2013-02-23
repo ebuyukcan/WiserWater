@@ -2,11 +2,13 @@
 
 window.WiserWater.HomeView = Backbone.View.extend({
   initialize: function(options) {
-    this.template = _.template(WiserWater.tpl.get('home'));
+    this.template = _.template(WiserWater.tpl.get('input'));
     return this;
   },
   render: function() {
-    $(this.el).html(this.template());
+    $(this.el).html(this.template({
+      title: "Test your water"
+    }));
     return this;
   }
 });
