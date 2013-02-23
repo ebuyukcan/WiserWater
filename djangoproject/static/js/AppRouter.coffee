@@ -18,6 +18,7 @@ AppRouter = Backbone.Router.extend
         # Changes the page using the backbone framework, no transitions
         if view?
             target.html $(view.render().el)
+            target.trigger("create")
 
   changePageJQM: (page) ->
         # Not working :( Changes the page using the JQM framework, having the nice transitions

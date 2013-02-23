@@ -1,12 +1,12 @@
 .ui-icon-home {
-	background-image: url("logo_header100x60.png");
+	background-image: url("../img/logo_header100x60.png");
 	background-size: 100px 60px;
 }
 .ui-icon-input {
-	background-image: url("input_icon_header60.png");
+	background-image: url("../img/input_icon_header60.png");
     background-size: 100px 60px;
 }
 .ui-icon-navigation {
-	background-image: url("down_arrow_header60.png");
+	background-image: url("../img/down_arrow_header60.png");
     background-size: 100px 60px;
 }

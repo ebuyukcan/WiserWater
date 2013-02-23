@@ -17,7 +17,8 @@ AppRouter = Backbone.Router.extend({
   },
   setPage: function(target, view) {
     if (view != null) {
-      return target.html($(view.render().el));
+      target.html($(view.render().el));
+      return target.trigger("create");
     }
   },
   changePageJQM: function(page) {
