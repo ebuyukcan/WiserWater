@@ -15,5 +15,5 @@ window.WiserWater.LakeModel = Backbone.Model.extend
     getLocationId: ->
     	return @fetch "locationId"
 
-    getPolutionLevel: ->
-    	return @fetch "polutionLevel"
+    getPollutionLevel: ->
+    	return @fetch "pollutionLevel"
