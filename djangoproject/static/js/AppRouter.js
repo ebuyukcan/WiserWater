@@ -48,6 +48,11 @@ AppRouter = Backbone.Router.extend({
     this.setPage($("#content"), new WiserWater.SearchByNameView());
     return this;
   },
+  renderCamera: function() {
+    console.debug("Rendering camera");
+    this.setPage($("#content"), new WiserWater.CameraView());
+    return this;
+  },
   setPage: function(target, view, header, footer) {
     if (header == null) {
       header = new WiserWater.HeaderView();

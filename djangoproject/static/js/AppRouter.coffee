@@ -52,6 +52,11 @@ AppRouter = Backbone.Router.extend
     @setPage $("#content"), new WiserWater.SearchByNameView()
     return @	
 
+  renderCamera: ->
+    console.debug "Rendering camera"
+    @setPage $("#content"), new WiserWater.CameraView()
+    return @
+	
   setPage: (target, view, header, footer) ->
     # Changes the page using the backbone framework, no transitions
     header ?= new WiserWater.HeaderView()

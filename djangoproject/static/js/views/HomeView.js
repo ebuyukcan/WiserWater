@@ -5,8 +5,15 @@ window.WiserWater.HomeView = Backbone.View.extend({
     this.template = _.template(WiserWater.tpl.get('home'));
     return this;
   },
+  events: {
+    "click .lakeId": "onLakeClick"
+  },
   render: function() {
     $(this.el).html(this.template());
     return this;
+  },
+  onLakeClick: function(args) {
+    args.preventDefault();
+    return WiserWater.app.renderLake();
   }
 });
