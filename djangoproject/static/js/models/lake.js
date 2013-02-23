@@ -17,7 +17,7 @@ window.WiserWater.LakeModel = Backbone.Model.extend({
   getLocationId: function() {
     return this.fetch("locationId");
   },
-  getPolutionLevel: function() {
-    return this.fetch("polutionLevel");
+  getPollutionLevel: function() {
+    return this.fetch("pollutionLevel");
   }
 });

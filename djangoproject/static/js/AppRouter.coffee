@@ -55,7 +55,10 @@ AppRouter = Backbone.Router.extend
 
   renderCamera: ->
     console.debug "Rendering camera"
-    @setPage $("#content"), new WiserWater.CameraView()
+    view =  new WiserWater.CameraView()
+    @setPage $("#content"), view
+    console.debug view
+    view.snapPhoto()
     return @
 
   renderOxygen: ->
