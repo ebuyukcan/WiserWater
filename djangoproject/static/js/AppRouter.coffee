@@ -57,6 +57,12 @@ AppRouter = Backbone.Router.extend
     console.debug "Rendering camera"
     @setPage $("#content"), new WiserWater.CameraView()
     return @
+
+  renderOxygen: ->
+    console.debug "Rendering oxygen"
+    @setPage $("#content"), new WiserWater.OxygenView()
+    return @
+
 	
   setPage: (target, view, header, footer) ->
     # Changes the page using the backbone framework, no transitions
