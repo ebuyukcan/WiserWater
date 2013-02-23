@@ -10,10 +10,7 @@ AppRouter = Backbone.Router.extend({
   routes: {
     "": "renderHome",
     "input": "renderInput",
-    "lake": "renderLake",
-    "profile": "renderProfile",
-    "searchmap": "renderSearchByMap",
-    "searchname": "renderSearchByName"
+    "lake": "renderLakeView"
   },
   renderHome: function() {
     console.debug("Rendering home");
@@ -21,33 +18,14 @@ AppRouter = Backbone.Router.extend({
     return this;
   },
   renderInput: function() {
-    console.debug("Rendering input");
-    this.setPage($("#content"), new WiserWater.InputView());
-    return this;
+    return console.debug("Rendering input");
   },
   renderNavigate: function() {
     return console.debug("Rendering navigate");
   },
-  renderLake: function(lakeId) {
-    if (!lakeId) {
-      console.debug("Invalid lake id");
-    }
+  renderLakeView: function(lakeId) {
+    console.debug("Rendering Lake View")
     this.setPage($("#content"), new WiserWater.LakeView());
-    return this;
-  },
-  renderProfile: function() {
-    console.debug("Rendering Profile");
-    this.setPage($("#content"), new WiserWater.ProfileView());
-    return this;
-  },
-  renderSearchByMap: function() {
-    console.debug("Rendering SearchByMap");
-    this.setPage($("#content"), new WiserWater.SearchByMapView());
-    return this;
-  },
-  renderSearchByName: function() {
-    console.debug("Rendering SearchByName");
-    this.setPage($("#content"), new WiserWater.SearchByNameView());
     return this;
   },
   setPage: function(target, view, header, footer) {

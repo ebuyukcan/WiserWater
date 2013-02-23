@@ -9,11 +9,8 @@ AppRouter = Backbone.Router.extend
   routes:
     "": "renderHome"
     "input": "renderInput"
-    "lake": "renderLake"
-    "profile": "renderProfile"
-    "searchmap": "renderSearchByMap"
-    "searchname": "renderSearchByName"
-  
+    "lake": "renderLakeView"
+
   renderHome: ->
     console.debug "Rendering home"
     @setPage $("#content"), new WiserWater.HomeView()
@@ -21,32 +18,19 @@ AppRouter = Backbone.Router.extend
 
   renderInput: ->
     console.debug "Rendering input"
-    @setPage $("#content"), new WiserWater.InputView()
-    return @
 
   renderNavigate: ->
     console.debug "Rendering navigate"
 
-  renderLake: (lakeId) ->
-    if not lakeId
-      console.debug "Invalid lake id"
+  renderLakeView: (lakeId) ->
+    #if not lakeId
     @setPage $("#content"), new WiserWater.LakeView()
+    console.debug "Invalid lake id"
     return@
-
-  renderProfile: ->
-    console.debug "Rendering Profile"
-    @setPage $("#content"), new WiserWater.ProfileView()
-    return @
-
-  renderSearchByMap: ->
-    console.debug "Rendering SearchByMap"
-    @setPage $("#content"), new WiserWater.SearchByMapView()
-    return @     
-
-  renderSearchByName: ->
-    console.debug "Rendering SearchByName"
-    @setPage $("#content"), new WiserWater.SearchByNameView()
-    return @     
+  #    if not lakeId
+  #    console.debug "Invalid lake id"
+  #     return@
+    #console.debug "Rendering lake view"
 
   setPage: (target, view, header, footer) ->
     # Changes the page using the backbone framework, no transitions
