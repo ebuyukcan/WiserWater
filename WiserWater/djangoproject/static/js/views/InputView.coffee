@@ -13,4 +13,4 @@ window.WiserWater.InputView = Backbone.View.extend
     
     #onCloseView: (args) ->
     #    args.preventDefault()
-    #    GroundUp.app.navigateMapView()
+    #
