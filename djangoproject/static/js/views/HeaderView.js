@@ -5,8 +5,25 @@ window.WiserWater.HeaderView = Backbone.View.extend({
     this.template = _.template(WiserWater.tpl.get('header'));
     return this;
   },
+  events: {
+    "click .homeButton": "onHomeClick",
+    "click .inputButton": "onInputClick",
+    "click .navigateButton": "onNavigateClick"
+  },
   render: function() {
     $(this.el).html(this.template());
     return this;
+  },
+  onHomeClick: function(args) {
+    args.preventDefault();
+    return WiserWater.app.renderHome();
+  },
+  onInputClick: function(args) {
+    args.preventDefault();
+    return WiserWater.app.renderInput();
+  },
+  onNavigateClick: function(args) {
+    args.preventDefault();
+    return WiserWater.app.renderNavigate();
   }
 });

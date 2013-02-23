@@ -8,11 +8,25 @@ AppRouter = Backbone.Router.extend
 
   routes:
     "": "renderHome"
+    "input": "renderInput"
 
   renderHome: ->
     console.debug "Rendering home"
     @setPage $("#content"), new WiserWater.HomeView()
     return @
+
+  renderInput: ->
+    console.debug "Rendering input"
+
+  renderNavigate: ->
+    console.debug "Rendering navigate"
+
+  renderLakeView: (lakeId) ->
+    if not lakeId
+      console.debug "Invalid lake id"
+      return@
+
+    console.debug "Rendering lake view"
 
   setPage: (target, view, header, footer) ->
     # Changes the page using the backbone framework, no transitions

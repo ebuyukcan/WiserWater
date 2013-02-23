@@ -8,12 +8,26 @@ AppRouter = Backbone.Router.extend({
     return console.debug("Initialized AppRouter");
   },
   routes: {
-    "": "renderHome"
+    "": "renderHome",
+    "input": "renderInput"
   },
   renderHome: function() {
     console.debug("Rendering home");
     this.setPage($("#content"), new WiserWater.HomeView());
     return this;
+  },
+  renderInput: function() {
+    return console.debug("Rendering input");
+  },
+  renderNavigate: function() {
+    return console.debug("Rendering navigate");
+  },
+  renderLakeView: function(lakeId) {
+    if (!lakeId) {
+      console.debug("Invalid lake id");
+      return this;
+    }
+    return console.debug("Rendering lake view");
   },
   setPage: function(target, view, header, footer) {
     if (header == null) {
