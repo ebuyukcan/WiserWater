@@ -9,7 +9,7 @@ AppRouter = Backbone.Router.extend
   routes:
     "": "renderHome"
     "input": "renderInput"
-    "lake": "renderLakeView"
+    "lake": "renderLake"
 
   renderHome: ->
     console.debug "Rendering home"
@@ -24,7 +24,7 @@ AppRouter = Backbone.Router.extend
   renderNavigate: ->
     console.debug "Rendering navigate"
 
-  renderLakeView: (lakeId) ->
+  renderLake: (lakeId) ->
     #if not lakeId
     @setPage $("#content"), new WiserWater.LakeView()
     console.debug "Invalid lake id"
