@@ -15,8 +15,3 @@ window.WiserWater.HomeView = Backbone.View.extend
       args.preventDefault()
       WiserWater.app.renderLake()
 
-    
-    #onCloseView: (args) ->
-    #    args.preventDefault()
-    #    GroundUp.app.navigateMapView()
-
