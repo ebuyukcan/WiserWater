@@ -33,7 +33,7 @@ AppRouter = Backbone.Router.extend({
     return console.debug("Rendering navigate");
   },
   renderLake: function(lakeId) {
-    console.log("You are trying to reach lake " + id);
+    console.log("You are trying to reach lake " + lakeId);
     this.setPage($("#content"), new WiserWater.LakeView());
     console.debug("Invalid lake id");
     return this;

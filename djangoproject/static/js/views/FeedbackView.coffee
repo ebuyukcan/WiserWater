@@ -4,6 +4,10 @@ window.WiserWater.FeedbackView = Backbone.View.extend
         @template = _.template WiserWater.tpl.get('feedback')
         return @
 
+    events:
+        "click .goToLake" : "onLakeClick"
+        "click .testAgain" : "onTestAgainClick"
+
     render: ->
         $(@el).html @template
             title: "Measurement results"
@@ -12,3 +16,11 @@ window.WiserWater.FeedbackView = Backbone.View.extend
 		
     detachCamera: ->
         $("#snap").unbind "click"
+
+    onLakeClick: (args) ->
+        args.preventDefault()
+        WiserWater.app.renderLake()
+
+    onTestAgainClick: (args) ->
+        args.preventDefault()
+        WiserWater.app.renderInput()

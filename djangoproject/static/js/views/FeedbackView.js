@@ -5,6 +5,10 @@ window.WiserWater.FeedbackView = Backbone.View.extend({
     this.template = _.template(WiserWater.tpl.get('feedback'));
     return this;
   },
+  events: {
+    "click .goToLake": "onLakeClick",
+    "click .testAgain": "onTestAgainClick"
+  },
   render: function() {
     $(this.el).html(this.template({
       title: "Measurement results"
@@ -14,5 +18,13 @@ window.WiserWater.FeedbackView = Backbone.View.extend({
   },
   detachCamera: function() {
     return $("#snap").unbind("click");
+  },
+  onLakeClick: function(args) {
+    args.preventDefault();
+    return WiserWater.app.renderLake();
+  },
+  onTestAgainClick: function(args) {
+    args.preventDefault();
+    return WiserWater.app.renderInput();
   }
 });
