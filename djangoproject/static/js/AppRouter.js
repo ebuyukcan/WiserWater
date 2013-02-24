@@ -55,7 +55,6 @@ AppRouter = Backbone.Router.extend({
   },
   renderCamera: function() {
     var view;
-    console.debug("Rendering camera");
     view = new WiserWater.CameraView();
     this.setPage($("#content"), view);
     view.snapPhoto();
@@ -76,14 +75,18 @@ AppRouter = Backbone.Router.extend({
     this.setPage($("#content"), new WiserWater.ProfileView());
     return this;
   },
-  setPage: function(target, view, header, footer) {
+  setPage: function(target, view, header, newsfeed, footer) {
     if (header == null) {
       header = new WiserWater.HeaderView();
+    }
+    if (newsfeed == null) {
+      newsfeed = new WiserWater.NewsfeedView();
     }
     if (footer == null) {
       footer = new WiserWater.FooterView();
     }
     $("#header").html(header.render().el).trigger("create");
+    $("#newsfeed").html(newsfeed.render().el).trigger("create");
     $("#footer").html(footer.render().el).trigger("create");
     if (view != null) {
       target.html($(view.render().el));
