@@ -8,6 +8,16 @@ from tastypie.utils import trailing_slash
 from djangoproject.backend.models import *
 from djangoproject.backend.api_helpers import *
 
+''' Workaround class to be compatible with backbone.js
+'''
+class BackboneModelResource(ModelResource):
+
+    class Meta:
+        always_return_data = True
+
+    def alter_list_data_to_serialize(self, request, data):
+        return data["objects"]
+		
 '''
 Any resource to be added to the api must also be registered to the api_v1 variable in the urls.py file.
 All resouces use an Authorization instance to authorize actions, which is great for testing but very insecure... This should definitely be fixed in production code.
@@ -66,13 +76,3 @@ class LakeResource(BackboneModelResource):
 
         lakes = bundleItemCollection(self, request, userProfile.pinnedLakes.all())
         return self.create_response(request, lakes)
-
-''' Workaround class to be compatible with backbone.js
-'''
-class BackboneModelResource(ModelResource):
-
-    class Meta:
-        always_return_data = True
-
-    def alter_list_data_to_serialize(self, request, data):
-        return data["objects"]
