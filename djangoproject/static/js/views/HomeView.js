@@ -6,6 +6,9 @@ window.WiserWater.HomeView = Backbone.View.extend({
     this.userLakes = new window.WiserWater.UserLakeCollection({
       userId: 11
     });
+    this.userNews = new window.WiserWater.UserNewsCollection({
+      userId: 11
+    });
     return this;
   },
   events: {
@@ -17,9 +20,14 @@ window.WiserWater.HomeView = Backbone.View.extend({
     $(this.el).html(this.template());
     this.userLakes.fetch({
       success: function(fetchedLakes) {
-        console.debug("success!!");
         self.userLakes = fetchedLakes;
         return self.renderUserLakes();
+      }
+    });
+    this.userNews.fetch({
+      success: function(fetchedNews) {
+        self.userNews = fetchedNews;
+        return self.renderUserNews();
       }
     });
     return this;
@@ -33,6 +41,14 @@ window.WiserWater.HomeView = Backbone.View.extend({
       return $("#pinnedLakes").append(lakeItemView.render().el);
     }), this);
     return $("#pinnedLakes").listview('refresh');
+  },
+  renderUserNews: function() {
+    var item, newsItemView;
+    item = this.userNews.models[0];
+    newsItemView = new window.WiserWater.NewsItemView({
+      model: item
+    });
+    return $("#newsStream").append(newsItemView.render().el);
   },
   onLakeClick: function(args) {
     args.preventDefault();
