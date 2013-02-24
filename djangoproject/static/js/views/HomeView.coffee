@@ -35,6 +35,7 @@ window.WiserWater.HomeView = Backbone.View.extend
       $("#newsStream").append newsItemView.render().el
 
     onLakeClick: (args) ->
+      console.debug "clicked on a lake"
       args.preventDefault()
+      console.debug args
       WiserWater.app.renderLake()
-
