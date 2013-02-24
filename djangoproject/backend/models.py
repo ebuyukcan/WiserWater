@@ -22,19 +22,19 @@ class Lake(models.Model):
 class LakePh(models.Model):
 	lake = models.ForeignKey(Lake)
 	user = models.ForeignKey(User)
-	date = models.DateField(default=datetime.datetime.now)
+	date = models.DateTimeField(default=datetime.datetime.now)
 	value = models.FloatField()
 
 class LakeOxygen(models.Model):
 	lake = models.ForeignKey(Lake)
 	user = models.ForeignKey(User)
-	date = models.DateField(default=datetime.datetime.now)
+	date = models.DateTimeField(default=datetime.datetime.now)
 	value = models.FloatField()
 
 class LakePicture(models.Model):
 	lake = models.ForeignKey(Lake)
 	user = models.ForeignKey(User)
-	date = models.DateField(default=datetime.datetime.now)
+	date = models.DateTimeField(default=datetime.datetime.now)
 	path = models.FileField(upload_to='lakes')
 
 class LakeNews(models.Model):
