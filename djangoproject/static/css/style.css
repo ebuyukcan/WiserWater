@@ -42,10 +42,8 @@
 	text-align: center;
 }
 
-#feedbackButtons {
-	background-color: #427B9E;
-	height: 20px!important; 
-}
-.goToLake , .testAgain {
-	background-color: #427B9E;
-}
+.ui-btn-up-feedback, .ui-btn-hover-feedback, .ui-btn-down-feedback { 
+	background-color: #427B9E !important;
+	color: white;
+	text-decoration: none;
+ }
