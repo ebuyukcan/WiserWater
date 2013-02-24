@@ -40,3 +40,11 @@ class LakePicture(models.Model):
 class LakeNews(models.Model):
 	lake = models.ForeignKey(Lake)
 	content = models.TextField()
+
+class UserProfile(models.Model):  
+    user = models.OneToOneField(User)  
+    
+    email = models.CharField(max_length=150)
+
+    def __str__(self):  
+          return "%s's profile" % self.user
