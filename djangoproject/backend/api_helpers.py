@@ -8,9 +8,4 @@ def bundleItemCollection(modelResource, request, items):
         bundle = ModelResource.build_bundle(modelResource, obj=item, request=request)
         bundle = ModelResource.full_dehydrate(modelResource, bundle)
         item_list.append(bundle)
-
-    object_list = {
-        'objects': item_list,
-    }
-
-    return object_list;
+    return item_list;

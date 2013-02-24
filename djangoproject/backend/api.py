@@ -13,6 +13,14 @@ Any resource to be added to the api must also be registered to the api_v1 variab
 All resouces use an Authorization instance to authorize actions, which is great for testing but very insecure... This should definitely be fixed in production code.
 '''
 
+class BackboneModelResource(ModelResource):
+
+    class Meta:
+        always_return_data = True
+
+    def alter_list_data_to_serialize(self, request, data):
+        return data["objects"]
+
 class NewsResource(ModelResource):
     class Meta:
         queryset = LakeNews.objects.all()
@@ -42,7 +50,7 @@ class RegionResource(ModelResource):
         resource_name = 'region'
         authorization = Authorization()
 
-class LakeResource(ModelResource):
+class LakeResource(BackboneModelResource):
     region = fields.ForeignKey(RegionResource, 'region', full=True)
     class Meta:
         queryset = Lake.objects.all()
