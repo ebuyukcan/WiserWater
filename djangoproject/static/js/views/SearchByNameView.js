@@ -5,8 +5,15 @@ window.WiserWater.SearchByNameView = Backbone.View.extend({
     this.template = _.template(WiserWater.tpl.get('searchname'));
     return this;
   },
+  events: {
+    "click .searchMap": "onSearchMapClick"
+  },
   render: function() {
     $(this.el).html(this.template);
     return this;
+  },
+  onSearchMapClick: function(args) {
+    args.preventDefault();
+    return WiserWater.app.renderSearchByMap();
   }
 });
