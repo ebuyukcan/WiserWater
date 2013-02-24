@@ -10,9 +10,15 @@ h3 {
 	padding: 20px 0px 10px 0px;	
 }
 
+footer h6{
+	text-align: center;
+	font-weight:300;
+}
+
 #home .ui-icon {
     width: 100px!important; 
 	background: url("../img/logo_header100x60.png");
+	margin-left: -60px !important;
 }
 
 #input .ui-icon {
@@ -23,6 +29,7 @@ h3 {
 #navigation .ui-icon {
     width: 60px!important; 
     background-image: url("../img/down_arrow_header60.png");
+	margin-left: 0px !important;
 }
 
 #header {
@@ -30,17 +37,18 @@ h3 {
 }
 
 .nav-glyphish-example .ui-btn .ui-btn-inner {
-    padding-top: 60px !important; 
+    padding-top: 60px!important; 
 }
 
 .nav-glyphish-example .ui-btn .ui-icon { 
-    height: 60px!important; 
+    height: 60px; 
     margin-left: -24px !important; 
-    box-shadow: none!important; 
-    -moz-box-shadow: none!important; 
-    -webkit-box-shadow: none!important;
-    -webkit-border-radius: none !important;
-    border-radius: none !important; 
+    box-shadow: none; 
+    -moz-box-shadow: none; 
+    -webkit-box-shadow: none;
+    -webkit-border-radius: none;
+    border-radius: none; 
+	background-color: transparent;
 }
 
 .veryClean, .clean, .polluted, .veryPolluted {
@@ -75,7 +83,7 @@ h3 {
 	text-decoration: none;
  }
  
- #loadingContainer, #photoInstructions {
+#loadingContainer, #photoInstructions {
     height: 400px;
     background-color:rgba(0,0,0,0.5);
     text-align: center;
@@ -87,3 +95,79 @@ h3 {
 .newsStream {
 	text-align: center;
 }
+
+/* Custom styling for .inputOptions grid */
+
+.inputOptions .ui-btn {
+	border: none;
+	background: #4e91bb;
+	color: #fff;
+	text-shadow: none;
+	
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
+	text-decoration: none;
+	
+	height: 160px;
+}
+
+.inputOptions .ui-btn h4 {
+	font-size: 22px;
+	line-height: 150%;
+}
+
+.inputOptions .ui-btn p {
+	font-size: 12px;
+}
+
+.comingSoon .ui-btn p {
+	font-size: 18px;
+	line-height: 150%;
+	padding-top: 10px;
+}
+
+.inputOptions .ui-btn:hover {
+	background: #a7c9dd;
+	color: #fff;
+}
+
+.inputOptions .ui-btn-down {
+	background: #a7c9dd;
+	color: #fff;
+}
+
+.comingSoon .ui-btn {
+	background: #a7c9dd;
+}
+
+.inputOptions .ui-icon {
+    width: 100px !important; 
+	height: 83px !important;
+	background-image: url("../img/inputOption_oxygen_100x83.png");
+}
+
+#photo .ui-icon {
+    background-image: url("../img/inputOption_photo_100x83.png");
+}
+
+#ph .ui-icon {
+    background-image: url("../img/inputOption_ph_100x83.png");
+}
+
+.inputOptions .ui-btn .ui-btn-inner {
+    padding-top: 100px!important; 
+}
+
+.inputOptions .ui-btn .ui-icon { 
+    height: 50px; 
+    margin-left: -50px !important; 
+    box-shadow: none; 
+    -moz-box-shadow: none; 
+    -webkit-box-shadow: none;
+    -webkit-border-radius: none;
+    border-radius: none; 
+	background-color: transparent;
+}
+
+/* end of .inputOptions */
+
