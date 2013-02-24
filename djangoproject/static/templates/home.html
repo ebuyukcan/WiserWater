@@ -1,8 +1,9 @@
 <div class="content" data-role="content">
 	<h3>PINNED</h3>
 		<ul data-role="listview">
-			<li class="lakeId">ILOJARVI</li>
-			<li class="lakeId">PUHDASVESI</li>
+			<% _.each(actions, function(acs) { %> 
+				<li class="lakeId"><%= acs.label %></li>
+			<% }); %>
 		</ul>
 	<h3>NEARBY</h3>
 		<ul data-role="listview">
@@ -16,3 +17,10 @@
 			<li>bbb</li>
 		</ul>
 </div>
+
+<div id="view-goes-here"></div>
+<script type="text/template" id="actions-template">
+<% _.each(actions, function(acs) { %> 
+    <a class="btn"><%= acs.label %></a>
+<% }); %>
+</script>
