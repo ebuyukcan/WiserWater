@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.conf.urls.defaults import *
 from django.conf.urls import *
 from tastypie.api import Api
@@ -24,4 +25,9 @@ urlpatterns = patterns('',
 
     url(r'^$', 'djangoproject.backend.views.index'),
     url(r'^api/', include(v1_api.urls)),
+)
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes':True}),
 )
