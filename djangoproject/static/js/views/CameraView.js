@@ -13,7 +13,7 @@ window.WiserWater.CameraView = Backbone.View.extend({
     return this;
   },
   snapPhoto: function() {
-    var canvas, context, errBack, video, videoObj;
+    var canvas, context, errBack, hide, show, video, videoObj;
     canvas = document.getElementById("canvas");
     context = canvas.getContext("2d");
     video = document.getElementById("video");
@@ -34,10 +34,21 @@ window.WiserWater.CameraView = Backbone.View.extend({
         return video.play();
       }), errBack);
     }
+    show = function() {
+      $('#camera').hide();
+      $('#loadingContainer').show();
+      return setTimeout(hide, 3000);
+    };
+    hide = function() {
+      $('#loadingContainer').hide();
+      console.debug("rendering feedback??");
+      return WiserWater.app.renderFeedback();
+    };
     return document.getElementById("snap").addEventListener("click", function() {
       context.drawImage(video, 0, 0, 640, 480);
-      console.debug("gonna render feedback");
-      return WiserWater.app.renderFeedback();
+      console.debug("setting timeout");
+      show();
+      return console.debug("showed loading");
     });
   }
 });

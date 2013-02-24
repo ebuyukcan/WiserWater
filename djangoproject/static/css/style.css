@@ -47,3 +47,12 @@
 	color: white;
 	text-decoration: none;
  }
+ 
+ #loadingContainer {
+    height: 400px;
+    background-color:rgba(0,0,0,0.5);
+    text-align: center;
+}
+#loadingIcon{
+    padding-top: 150px;
+}
