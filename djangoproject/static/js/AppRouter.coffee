@@ -79,6 +79,12 @@ AppRouter = Backbone.Router.extend
     @setPage $("#content"), new WiserWater.OxygenView()
     return @
 
+  
+  renderProfile: ->
+    console.debug "Rendering profile"
+    @setPage $("#content"), new WiserWater.ProfileView()
+    return @
+
 	
   setPage: (target, view, header, footer) ->
     # Changes the page using the backbone framework, no transitions

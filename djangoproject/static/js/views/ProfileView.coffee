@@ -7,4 +7,11 @@ window.WiserWater.ProfileView = Backbone.View.extend
     render: ->
         $(@el).html @template
         return @
+
+    events:
+        "click .lakeId" : "onLakeClick"
+
+    onLakeClick: (args) ->
+      args.preventDefault()
+      WiserWater.app.renderLake()
     

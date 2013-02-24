@@ -8,7 +8,7 @@ window.WiserWater.FooterView = Backbone.View.extend({
   events: {
     "click .homeButton": "onHomeClick",
     "click .searchButton": "onSearchClick",
-    "click .profileButton": "onSearchClick"
+    "click .profileButton": "onProfileClick"
   },
   render: function() {
     $(this.el).html(this.template());

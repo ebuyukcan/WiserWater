@@ -8,5 +8,12 @@ window.WiserWater.ProfileView = Backbone.View.extend({
   render: function() {
     $(this.el).html(this.template);
     return this;
+  },
+  events: {
+    "click .lakeId": "onLakeClick"
+  },
+  onLakeClick: function(args) {
+    args.preventDefault();
+    return WiserWater.app.renderLake();
   }
 });

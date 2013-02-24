@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.conf.urls.defaults import *
 from django.conf.urls import *
 from tastypie.api import Api
@@ -11,8 +12,6 @@ admin.autodiscover()
 v1_api = Api(api_name='v1')
 v1_api.register(LakeResource())
 
-lake_resource = LakeResource()
-
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'djangoproject.views.home', name='home'),
@@ -22,8 +21,13 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 
     url(r'^$', 'djangoproject.backend.views.index'),
     url(r'^api/', include(v1_api.urls)),
+)
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes':True}),
 )
