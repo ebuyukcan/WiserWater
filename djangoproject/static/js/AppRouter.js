@@ -62,6 +62,11 @@ AppRouter = Backbone.Router.extend({
     this.setPage($("#content"), new WiserWater.OxygenView());
     return this;
   },
+  renderProfile: function() {
+    console.debug("Rendering profile");
+    this.setPage($("#content"), new WiserWater.ProfileView());
+    return this;
+  },
   setPage: function(target, view, header, footer) {
     if (header == null) {
       header = new WiserWater.HeaderView();
