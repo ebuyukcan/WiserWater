@@ -1,10 +1,13 @@
-body {
-   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-   font-weight: 300;
+body, h3 {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
 }
 
-h1 {
-	
+h3 {
+	text-transform:uppercase;
+	text-align:center;
+	font-size:10pt;
+	padding: 20px 0px 10px 0px;	
 }
 
 #home .ui-icon {
@@ -71,3 +74,16 @@ h1 {
 	color: white;
 	text-decoration: none;
  }
+ 
+ #loadingContainer, #photoInstructions {
+    height: 400px;
+    background-color:rgba(0,0,0,0.5);
+    text-align: center;
+}
+#loadingIcon{
+    padding-top: 150px;
+}
+
+#instructionBtnOK {
+	
+}

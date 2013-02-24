@@ -1,3 +1,20 @@
-<video id="video" width="640" height="480" autoplay></video>
-<button id="snap">Snap Photo</button>
-<canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+<div id="photoInstructions">
+	<div id="instructionText">
+		Take a photo of the lake like in the example
+	</div>
+	<img id="instructionImg" src="../../static/img/photo_instruction.jpg" width="300" height="225"/>
+	<div id="instructionOK">
+		<div id="instructionBtnOK"><a href="#" data-role="button" data-inline="true" data-theme="feedback">OK</a></div>
+	</div>
+</div>
+<div id="camera" style="display:none;">
+	<video id="video" width="640" height="480" autoplay></video>
+	<button id="snap">Snap Photo</button>
+	<canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+</div>
+<div id="loadingContainer" style="display:none;">
+	<div id="loading">
+		<img id="loadingIcon" src="../../static/img/ajax-loader.gif"/>
+	</div>
+</div>
+

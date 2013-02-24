@@ -4,10 +4,12 @@ window.WiserWater.CameraView = Backbone.View.extend
         @template = _.template WiserWater.tpl.get('camera')
         return @
 
+    events:
+        "click #instructionOK" : "onInstructionClickOK"
+
     render: ->
         $(@el).html @template
             title: "Take a photo of your water"
-        $(@el).onload = @snapPhoto
         return @
 		
     snapPhoto: ->
@@ -29,9 +31,24 @@ window.WiserWater.CameraView = Backbone.View.extend
                 video.src = window.webkitURL.createObjectURL(stream)
                 video.play()
             ), errBack
+        show = ->
+            $('#camera').hide()
+            $('#loadingContainer').show()
+            setTimeout hide, 3000
+
+        hide = ->
+            $('#loadingContainer').hide()
+            console.debug "rendering feedback??"
+            WiserWater.app.renderFeedback()
     
     # Trigger photo take
         document.getElementById("snap").addEventListener "click", ->
             context.drawImage video, 0, 0, 640, 480
-            console.debug "gonna render feedback"
-            WiserWater.app.renderFeedback()
+            console.debug "setting timeout"
+            show()
+            console.debug "showed loading"
+
+    onInstructionClickOK: ->
+        $('#photoInstructions').hide()
+        $('#camera').show()
+        @snapPhoto()
