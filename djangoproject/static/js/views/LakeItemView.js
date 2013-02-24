@@ -2,7 +2,7 @@
 
 window.WiserWater.LakeItemView = Backbone.View.extend({
   tagName: "li",
-  className: "listId",
+  className: "lakeId",
   initialize: function(options) {
     this.template = _.template(WiserWater.tpl.get('lakeitem'));
     console.debug(options.model);

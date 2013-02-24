@@ -1,6 +1,6 @@
 window.WiserWater.LakeItemView = Backbone.View.extend
-    tagName: "li";
-    className: "listId";
+    tagName: "li"; #tag of the generated element. If nothing will be div by default
+    className: "lakeId"; # class of the generated element
 
     initialize: (options) ->
         @template = _.template WiserWater.tpl.get('lakeitem')

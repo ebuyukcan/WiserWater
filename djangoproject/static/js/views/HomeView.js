@@ -35,7 +35,9 @@ window.WiserWater.HomeView = Backbone.View.extend({
     return $("#pinnedLakes").listview('refresh');
   },
   onLakeClick: function(args) {
+    console.debug("clicked on a lake");
     args.preventDefault();
+    console.debug(args);
     return WiserWater.app.renderLake();
   }
 });

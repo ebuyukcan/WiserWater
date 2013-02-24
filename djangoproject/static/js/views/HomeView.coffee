@@ -26,6 +26,7 @@ window.WiserWater.HomeView = Backbone.View.extend
       $("#pinnedLakes").listview('refresh')
 
     onLakeClick: (args) ->
+      console.debug "clicked on a lake"
       args.preventDefault()
+      console.debug args
       WiserWater.app.renderLake()
-
