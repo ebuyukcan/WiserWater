@@ -19,3 +19,4 @@ window.WiserWater.HomeView = Backbone.View.extend
     #onCloseView: (args) ->
     #    args.preventDefault()
     #    GroundUp.app.navigateMapView()
+

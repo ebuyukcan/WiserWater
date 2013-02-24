@@ -10,10 +10,14 @@ AppRouter = Backbone.Router.extend({
   routes: {
     "": "renderHome",
     "input": "renderInput",
-    "lake": "renderLake",
+    "lake/:id": "renderLake",
     "profile": "renderProfile",
     "searchmap": "renderSearchByMap",
-    "searchname": "renderSearchByName"
+    "searchname": "renderSearchByName",
+    "*other": "defaultRoute"
+  },
+  defaultRoute: function(other) {
+    return console.log("Invalid. You attempted to reach:" + other);
   },
   renderHome: function() {
     console.debug("Rendering home");
@@ -29,6 +33,7 @@ AppRouter = Backbone.Router.extend({
     return console.debug("Rendering navigate");
   },
   renderLake: function(lakeId) {
+    console.log("You are trying to reach lake " + id);
     this.setPage($("#content"), new WiserWater.LakeView());
     console.debug("Invalid lake id");
     return this;
@@ -64,6 +69,11 @@ AppRouter = Backbone.Router.extend({
   renderOxygen: function() {
     console.debug("Rendering oxygen");
     this.setPage($("#content"), new WiserWater.OxygenView());
+    return this;
+  },
+  renderProfile: function() {
+    console.debug("Rendering profile");
+    this.setPage($("#content"), new WiserWater.ProfileView());
     return this;
   },
   setPage: function(target, view, header, footer) {

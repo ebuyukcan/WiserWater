@@ -10,7 +10,9 @@ window.WiserWater.InputView = Backbone.View.extend
         "click #oxygenButton" : "onOxygenPressed"
 
     render: ->
-        $(@el).html @template
+        @$el.html @template     
+        # it is the same as the line below
+        #$(@el).html @template
             title: "Test your water"
         return @
     

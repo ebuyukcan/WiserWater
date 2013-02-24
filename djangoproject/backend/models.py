@@ -35,16 +35,18 @@ class LakePicture(models.Model):
 	lake = models.ForeignKey(Lake)
 	user = models.ForeignKey(User)
 	date = models.DateField(default=datetime.datetime.now)
-	path = models.CharField(max_length=100)
+	path = models.FileField(upload_to='lakes')
 
 class LakeNews(models.Model):
 	lake = models.ForeignKey(Lake)
 	content = models.TextField()
 
 class UserProfile(models.Model):  
-    user = models.OneToOneField(User)  
+    user = models.OneToOneField(User)
+    region = models.ForeignKey(Region)
+    pinnedLakes = models.ManyToManyField(Lake)
     
-    email = models.CharField(max_length=150)
+    avatar = models.FileField(upload_to='profiles')
 
     def __str__(self):  
           return "%s's profile" % self.user

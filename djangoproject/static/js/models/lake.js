@@ -3,7 +3,8 @@
 window.WiserWater.LakeModel = Backbone.Model.extend({
   initialize: function(options) {
     this.id = options.lakeId;
-    return this.url = "/api/v1/project/" + encodeURIComponent(this.id) + "/?format=json";
+    this.url = "/api/v1/project/" + encodeURIComponent(this.id) + "/?format=json";
+    return console.log("Lake model has been initialized.");
   },
   getId: function() {
     return this.id;

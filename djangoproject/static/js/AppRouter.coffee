@@ -6,14 +6,25 @@ AppRouter = Backbone.Router.extend
 
     console.debug "Initialized AppRouter"
 
+  # define the route and function maps for this router
+  # Sample usage: http://example.com/#input
   routes:
     "": "renderHome"
     "input": "renderInput"
-    "lake": "renderLake"
+    "lake/:id": "renderLake"
+         # This is an example of using a ":param" variable which allows us to match
+         # any of the components between two URL slashes 
+         # Sample usage: http://example.com/#lake/5 
     "profile": "renderProfile"
     "searchmap": "renderSearchByMap"
     "searchname": "renderSearchByName"
+    "*other": "defaultRoute"
+         # This is a default route that also uses a *splat. Consider the
+         # default route a wildcard for URLs that are either not matched or where
+         # the user has incorrectly typed in a route path manually 
 
+  defaultRoute: (other) ->
+    console.log "Invalid. You attempted to reach:" + other
 
   renderHome: ->
     console.debug "Rendering home"
@@ -29,6 +40,8 @@ AppRouter = Backbone.Router.extend
     console.debug "Rendering navigate"
 
   renderLake: (lakeId) ->
+        # Note that the id matched in the above route will be passed to this function
+    console.log "You are trying to reach lake " + id
     #if not lakeId
     @setPage $("#content"), new WiserWater.LakeView()
     console.debug "Invalid lake id"
@@ -68,6 +81,12 @@ AppRouter = Backbone.Router.extend
   renderOxygen: ->
     console.debug "Rendering oxygen"
     @setPage $("#content"), new WiserWater.OxygenView()
+    return @
+
+  
+  renderProfile: ->
+    console.debug "Rendering profile"
+    @setPage $("#content"), new WiserWater.ProfileView()
     return @
 
 	

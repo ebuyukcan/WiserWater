@@ -11,7 +11,7 @@ window.WiserWater.InputView = Backbone.View.extend({
     "click #oxygenButton": "onOxygenPressed"
   },
   render: function() {
-    $(this.el).html(this.template({
+    this.$el.html(this.template({
       title: "Test your water"
     }));
     return this;
