@@ -30,3 +30,22 @@
     -webkit-border-radius: none !important;
     border-radius: none !important; 
 }
+
+.veryClean {
+	color: #10660D;
+	font-weight: bold;
+}
+
+.cleanliness {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+#feedbackButtons {
+	background-color: #427B9E;
+	height: 20px!important; 
+}
+.goToLake , .testAgain {
+	background-color: #427B9E;
+}
