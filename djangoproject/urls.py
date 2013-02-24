@@ -11,8 +11,6 @@ admin.autodiscover()
 v1_api = Api(api_name='v1')
 v1_api.register(LakeResource())
 
-lake_resource = LakeResource()
-
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'djangoproject.views.home', name='home'),
