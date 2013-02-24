@@ -3,21 +3,30 @@
 window.WiserWater.LakeModel = Backbone.Model.extend({
   initialize: function(options) {
     this.id = options.lakeId;
-    return this.url = "/api/v1/project/" + encodeURIComponent(this.id) + "/?format=json";
+    return this.url = "/api/v1/lake/" + encodeURIComponent(this.id) + "/?format=json";
   },
   getId: function() {
     return this.id;
   },
   getName: function() {
-    return this.fetch("name");
+    return this.attributes["name"];
   },
-  getRegion: function() {
-    return this.fetch("region");
-  },
-  getLocationId: function() {
-    return this.fetch("locationId");
-  },
-  getPollutionLevel: function() {
-    return this.fetch("pollutionLevel");
+  getLocation: function() {
+    return {
+      lat: this.attributes["latitude"],
+      lon: this.attributes["longitude"]
+    };
+  }
+});
+
+window.WiserWater.LakeCollection = Backbone.Collection.extend({
+  model: WiserWater.LakeModel,
+  url: "/api/v1/lake/?format=json"
+});
+
+window.WiserWater.UserLakeCollection = Backbone.Collection.extend({
+  model: WiserWater.LakeModel,
+  initialize: function(options) {
+    return this.url = "/api/v1/lake/byUser/?format=json&u=" + encodeURIComponent(options.userId);
   }
 });

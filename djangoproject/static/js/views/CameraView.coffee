@@ -33,3 +33,5 @@ window.WiserWater.CameraView = Backbone.View.extend
     # Trigger photo take
         document.getElementById("snap").addEventListener "click", ->
             context.drawImage video, 0, 0, 640, 480
+            console.debug "gonna render feedback"
+            WiserWater.app.renderFeedback()

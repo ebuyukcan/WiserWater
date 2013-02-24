@@ -1,21 +1,27 @@
 window.WiserWater.LakeModel = Backbone.Model.extend
     initialize: (options) ->
-#listeners for changes to the model goes here   
         @id = options.lakeId
-        @url = "/api/v1/project/" + encodeURIComponent(@id) + "/?format=json"
-        console.log "Lake model has been initialized."
+        @url = "/api/v1/lake/" + encodeURIComponent(@id) + "/?format=json"
 
     getId: ->
-    	return @id
+        return @id
 
     getName: ->
-    	return @fetch "name"
+        return @attributes["name"]
 
-    getRegion: ->
-    	return @fetch "region"
+    getLocation: ->
+        return {
+            lat: @attributes["latitude"]
+            lon: @attributes["longitude"]
+        }
 
-    getLocationId: ->
-    	return @fetch "locationId"
+window.WiserWater.LakeCollection = Backbone.Collection.extend
+    model: WiserWater.LakeModel
+    url: "/api/v1/lake/?format=json"
 
-    getPollutionLevel: ->
-    	return @fetch "pollutionLevel"
+    
+window.WiserWater.UserLakeCollection = Backbone.Collection.extend
+    model: WiserWater.LakeModel
+
+    initialize: (options) ->
+        @url = "/api/v1/lake/byUser/?format=json&u=" + encodeURIComponent(options.userId)

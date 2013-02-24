@@ -30,3 +30,20 @@
     -webkit-border-radius: none !important;
     border-radius: none !important; 
 }
+
+.veryClean {
+	color: #10660D;
+	font-weight: bold;
+}
+
+.cleanliness {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+.ui-btn-up-feedback, .ui-btn-hover-feedback, .ui-btn-down-feedback { 
+	background-color: #427B9E !important;
+	color: white;
+	text-decoration: none;
+ }

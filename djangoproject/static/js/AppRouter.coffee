@@ -41,7 +41,7 @@ AppRouter = Backbone.Router.extend
 
   renderLake: (lakeId) ->
         # Note that the id matched in the above route will be passed to this function
-    console.log "You are trying to reach lake " + id
+    console.log "You are trying to reach lake " + lakeId
     #if not lakeId
     @setPage $("#content"), new WiserWater.LakeView()
     console.debug "Invalid lake id"
@@ -70,8 +70,12 @@ AppRouter = Backbone.Router.extend
     console.debug "Rendering camera"
     view =  new WiserWater.CameraView()
     @setPage $("#content"), view
-    console.debug view
     view.snapPhoto()
+    return @
+	
+  renderFeedback: ->
+    console.debug "Rendering feedback"
+    @setPage $("#content"), new WiserWater.FeedbackView()
     return @
 
   renderOxygen: ->

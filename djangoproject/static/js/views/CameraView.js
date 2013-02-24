@@ -35,7 +35,9 @@ window.WiserWater.CameraView = Backbone.View.extend({
       }), errBack);
     }
     return document.getElementById("snap").addEventListener("click", function() {
-      return context.drawImage(video, 0, 0, 640, 480);
+      context.drawImage(video, 0, 0, 640, 480);
+      console.debug("gonna render feedback");
+      return WiserWater.app.renderFeedback();
     });
   }
 });

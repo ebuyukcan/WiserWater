@@ -33,7 +33,7 @@ AppRouter = Backbone.Router.extend({
     return console.debug("Rendering navigate");
   },
   renderLake: function(lakeId) {
-    console.log("You are trying to reach lake " + id);
+    console.log("You are trying to reach lake " + lakeId);
     this.setPage($("#content"), new WiserWater.LakeView());
     console.debug("Invalid lake id");
     return this;
@@ -58,8 +58,12 @@ AppRouter = Backbone.Router.extend({
     console.debug("Rendering camera");
     view = new WiserWater.CameraView();
     this.setPage($("#content"), view);
-    console.debug(view);
     view.snapPhoto();
+    return this;
+  },
+  renderFeedback: function() {
+    console.debug("Rendering feedback");
+    this.setPage($("#content"), new WiserWater.FeedbackView());
     return this;
   },
   renderOxygen: function() {
