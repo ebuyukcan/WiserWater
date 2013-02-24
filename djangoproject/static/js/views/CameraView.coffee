@@ -32,7 +32,7 @@ window.WiserWater.CameraView = Backbone.View.extend
         show = ->
             $('#camera').hide()
             $('#loadingContainer').show()
-            setTimeout hide, 3000
+            setTimeout hide, 300
 
         hide = ->
             $('#loadingContainer').hide()
