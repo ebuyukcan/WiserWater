@@ -6,22 +6,32 @@ from tastypie.resources import ModelResource
 from tastypie.utils import trailing_slash
 
 from djangoproject.backend.models import *
+from djangoproject.backend.api_helpers import *
 
 # authorization= Authorization() # Great for testing in development but VERY INSECURE =D
 
-'''
-class UserResource(ModelResource):
+class NewsResource(ModelResource):
     class Meta:
-        queryset = User.objects.all()
-        resource_name = 'user'
+        queryset = LakeNews.objects.all()
+        resource_name = 'news'
+        authorization = Authorization()
 
-class UserLakeResource(ModelResource):
-	user = fields.ForeignKey(UserResource, 'user') 
-	lakes = fields.ToManyField('LakeResource', 'lake', full=True)
-	class Meta:
-			queryset = 
-			resource_name = 'userLakes'
-'''
+    def override_urls(self):
+        return [
+            url(r"^(?P<resource_name>%s)/latest%s$" % (self._meta.resource_name, trailing_slash()), self.wrap_view('get_latest_news'), name="api_get_latest_news"),
+        ]
+
+    def get_latest_news(self, request, **kwargs):
+        self.method_check(request, allowed=['get'])
+        self.throttle_check(request)
+
+        itemCount = request.GET.get('count', '-1')
+        if (itemCount < 0):
+            itemCount = 5
+        news = LakeNews.objects.all()[:itemCount]
+        news = bundleItemCollection(self, request, news)
+        return self.create_response(request, news)
+
 
 class RegionResource(ModelResource):
     class Meta:
@@ -50,16 +60,6 @@ class LakeResource(ModelResource):
         userId =request.GET.get('u', '')
         user = User.objects.get(id=userId)
         userProfile = UserProfile.objects.get(user=user)
-        
-        lake_list = []
-        print userProfile.pinnedLakes.all()
-        for lake in userProfile.pinnedLakes.all():
-            bundle = self.build_bundle(obj=lake, request=request)
-            bundle = self.full_dehydrate(bundle)
-            lake_list.append(bundle)
 
-        object_list = {
-            'objects': lake_list,
-        }
-
-        return self.create_response(request, object_list)
+        lakes = bundleItemCollection(self, request, userProfile.pinnedLakes.all())
+        return self.create_response(request, lakes)
