@@ -26,7 +26,7 @@ Backbone.View.prototype.back = function(event) {
   return window.history.back();
 };
 
-WiserWater.tpl.loadTemplates(["home", "footer", "header", "input", "lake", "lakeitem", "profile", "searchmap", "searchname", "feedback", "camera", "oxygen"], function() {
+WiserWater.tpl.loadTemplates(["home", "footer", "header", "input", "lake", "lakeitem", "profile", "searchmap", "searchname", "feedback", "camera", "oxygen", "newsfeed"], function() {
   WiserWater.app = new AppRouter();
   return Backbone.history.start();
 });
