@@ -12,6 +12,7 @@ admin.autodiscover()
 v1_api = Api(api_name='v1')
 v1_api.register(LakeResource())
 v1_api.register(RegionResource())
+v1_api.register(NewsResource())
 
 urlpatterns = patterns('',
     # Examples:
