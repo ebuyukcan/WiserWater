@@ -1,3 +1,12 @@
+body {
+   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
+}
+
+h1 {
+	
+}
+
 #home .ui-icon {
     width: 100px!important; 
 	background: url("../img/logo_header100x60.png");
@@ -31,9 +40,24 @@
     border-radius: none !important; 
 }
 
-.veryClean {
-	color: #10660D;
+.veryClean, .clean, .polluted, .veryPolluted {
 	font-weight: bold;
+}
+
+.veryClean {
+	color: #4e91bb;
+}
+
+.clean {
+	color: #10c702;
+}
+
+.polluted {
+	color: #ff9900;
+}
+
+.veryPolluted {
+	color: #ff0000;
 }
 
 .cleanliness {
