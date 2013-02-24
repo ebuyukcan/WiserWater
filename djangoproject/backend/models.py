@@ -42,9 +42,11 @@ class LakeNews(models.Model):
 	content = models.TextField()
 
 class UserProfile(models.Model):  
-    user = models.OneToOneField(User)  
+    user = models.OneToOneField(User)
+    region = models.ForeignKey(Region)
+    pinnedLakes = models.ManyToManyField(Lake)
     
-    email = models.EmailField(max_length=254)
+    avatar = models.FileField(upload_to='profiles')
 
     def __str__(self):  
           return "%s's profile" % self.user
