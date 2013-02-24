@@ -8,11 +8,8 @@ from tastypie.utils import trailing_slash
 from djangoproject.backend.models import *
 from djangoproject.backend.api_helpers import *
 
+''' Workaround class to be compatible with backbone.js
 '''
-Any resource to be added to the api must also be registered to the api_v1 variable in the urls.py file.
-All resouces use an Authorization instance to authorize actions, which is great for testing but very insecure... This should definitely be fixed in production code.
-'''
-
 class BackboneModelResource(ModelResource):
 
     class Meta:
@@ -20,8 +17,13 @@ class BackboneModelResource(ModelResource):
 
     def alter_list_data_to_serialize(self, request, data):
         return data["objects"]
+		
+'''
+Any resource to be added to the api must also be registered to the api_v1 variable in the urls.py file.
+All resouces use an Authorization instance to authorize actions, which is great for testing but very insecure... This should definitely be fixed in production code.
+'''
 
-class NewsResource(ModelResource):
+class NewsResource(BackboneModelResource):
     class Meta:
         queryset = LakeNews.objects.all()
         resource_name = 'news'
@@ -44,7 +46,7 @@ class NewsResource(ModelResource):
         return self.create_response(request, news)
 
 
-class RegionResource(ModelResource):
+class RegionResource(BackboneModelResource):
     class Meta:
         queryset = Region.objects.all()
         resource_name = 'region'
