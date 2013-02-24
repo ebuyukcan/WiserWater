@@ -3,14 +3,36 @@
 window.WiserWater.HomeView = Backbone.View.extend({
   initialize: function(options) {
     this.template = _.template(WiserWater.tpl.get('home'));
+    this.userLakes = new window.WiserWater.UserLakeCollection({
+      userId: 11
+    });
     return this;
   },
   events: {
     "click .lakeId": "onLakeClick"
   },
   render: function() {
+    var self;
+    self = this;
     $(this.el).html(this.template());
+    this.userLakes.fetch({
+      success: function(fetchedLakes) {
+        console.debug("success!!");
+        self.userLakes = fetchedLakes;
+        return self.renderUserLakes();
+      }
+    });
     return this;
+  },
+  renderUserLakes: function() {
+    _.each(this.userLakes.models, (function(item) {
+      var lakeItemView;
+      lakeItemView = new window.WiserWater.LakeItemView({
+        model: item
+      });
+      return $("#pinnedLakes").append(lakeItemView.render().el);
+    }), this);
+    return $("#pinnedLakes").listview('refresh');
   },
   onLakeClick: function(args) {
     args.preventDefault();
