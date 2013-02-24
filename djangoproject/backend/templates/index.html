@@ -43,7 +43,9 @@
 
             <script src="{% get_static_prefix %}js/views/HeaderView.js"></script>
             <script src="{% get_static_prefix %}js/views/FooterView.js"></script>
+			<script src="{% get_static_prefix %}js/views/NewsfeedView.js"></script>
             <script src="{% get_static_prefix %}js/views/HomeView.js"></script>
+		    <script src="{% get_static_prefix %}js/views/LakeItemView.js"></script>
 		    <script src="{% get_static_prefix %}js/views/InputView.js"></script>
 			<script src="{% get_static_prefix %}js/views/CameraView.js"></script>
 			<script src="{% get_static_prefix %}js/views/FeedbackView.js"></script>
@@ -66,6 +68,7 @@
         <div data-role="page">
             <header id="header" data-role="header" data-id="persistentHeader" data-position="fixed"></header>
             <div id="content"></div>
+			<div id="newsfeed"></div>
             <footer id="footer" data-role="footer" data-id="persistentFooter"></footer>
         </div>
 		
