@@ -11,6 +11,7 @@ admin.autodiscover()
 # REST resources
 v1_api = Api(api_name='v1')
 v1_api.register(LakeResource())
+v1_api.register(RegionResource())
 
 urlpatterns = patterns('',
     # Examples:
