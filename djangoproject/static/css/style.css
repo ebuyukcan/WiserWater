@@ -1,6 +1,7 @@
 body, h3 {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	font-weight: 300;
+	line-height: 140%;
 }
 
 h3 {
@@ -13,6 +14,27 @@ h3 {
 footer h6{
 	text-align: center;
 	font-weight:300;
+}
+
+/* Header styling */
+
+#header {
+	height: 70px;
+}
+
+.nav-glyphish-example .ui-btn .ui-btn-inner {
+    padding-top: 60px!important; 
+}
+
+.nav-glyphish-example .ui-btn .ui-icon { 
+    height: 60px;
+    margin-left: -24px !important; 
+    box-shadow: none; 
+    -moz-box-shadow: none; 
+    -webkit-box-shadow: none;
+    -webkit-border-radius: none;
+    border-radius: none; 
+	background-color: transparent;
 }
 
 #home .ui-icon {
@@ -29,27 +51,11 @@ footer h6{
 #navigation .ui-icon {
     width: 60px!important; 
     background-image: url("../img/down_arrow_header60.png");
+	position: absolute;
 	margin-left: 0px !important;
 }
 
-#header {
-	height: 70px;
-}
-
-.nav-glyphish-example .ui-btn .ui-btn-inner {
-    padding-top: 60px!important; 
-}
-
-.nav-glyphish-example .ui-btn .ui-icon { 
-    height: 60px; 
-    margin-left: -24px !important; 
-    box-shadow: none; 
-    -moz-box-shadow: none; 
-    -webkit-box-shadow: none;
-    -webkit-border-radius: none;
-    border-radius: none; 
-	background-color: transparent;
-}
+/* end of header styling */
 
 .veryClean, .clean, .polluted, .veryPolluted {
 	font-weight: bold;
