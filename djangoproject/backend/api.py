@@ -8,10 +8,9 @@ from tastypie.utils import trailing_slash
 from djangoproject.backend.models import *
 from djangoproject.backend.api_helpers import *
 
-# authorization= Authorization() # Great for testing in development but VERY INSECURE =D
-
 '''
-Any resource to be added to the api must also be registered to the api_v1 collection in the urls.py file
+Any resource to be added to the api must also be registered to the api_v1 variable in the urls.py file.
+All resouces use an Authorization instance to authorize actions, which is great for testing but very insecure... This should definitely be fixed in production code.
 '''
 
 class NewsResource(ModelResource):
