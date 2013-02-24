@@ -19,3 +19,39 @@ window.WiserWater.HomeView = Backbone.View.extend
     #onCloseView: (args) ->
     #    args.preventDefault()
     #    GroundUp.app.navigateMapView()
+
+	TodosCollection = new Backbone.Collection()
+	TodosCollection.add [
+	  title: "go to Belgium."
+	  completed: false
+	,
+	  title: "go to China."
+	  completed: false
+	,
+	  title: "go to Austria."
+	  completed: true
+	]
+
+	# iterate over models in the collection
+	TodosCollection.forEach (model) ->
+	  console.log model.get("title")
+
+
+	# Above logs:
+	# go to Belgium.
+	# go to China.
+	# go to Austria.
+
+	# sort collection
+	sortedByAlphabet = TodosCollection.sortBy((todo) ->
+	  todo.get("title").toLowerCase()
+	)
+	console.log "- Now sorted: "
+	sortedByAlphabet.forEach (model) ->
+	  console.log model.get("title")
+
+
+	# Above logs:
+	# go to Austria.
+	# go to Belgium.
+	# go to China.
