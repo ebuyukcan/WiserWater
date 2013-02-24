@@ -4,10 +4,12 @@ window.WiserWater.CameraView = Backbone.View.extend
         @template = _.template WiserWater.tpl.get('camera')
         return @
 
+    events:
+        "click #instructionOK" : "onInstructionClickOK"
+
     render: ->
         $(@el).html @template
             title: "Take a photo of your water"
-        $(@el).onload = @snapPhoto
         return @
 		
     snapPhoto: ->
@@ -32,7 +34,7 @@ window.WiserWater.CameraView = Backbone.View.extend
         show = ->
             $('#camera').hide()
             $('#loadingContainer').show()
-            setTimeout hide, 300
+            setTimeout hide, 3000
 
         hide = ->
             $('#loadingContainer').hide()
@@ -45,3 +47,8 @@ window.WiserWater.CameraView = Backbone.View.extend
             console.debug "setting timeout"
             show()
             console.debug "showed loading"
+
+    onInstructionClickOK: ->
+        $('#photoInstructions').hide()
+        $('#camera').show()
+        @snapPhoto()

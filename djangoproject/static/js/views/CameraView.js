@@ -5,11 +5,13 @@ window.WiserWater.CameraView = Backbone.View.extend({
     this.template = _.template(WiserWater.tpl.get('camera'));
     return this;
   },
+  events: {
+    "click #instructionOK": "onInstructionClickOK"
+  },
   render: function() {
     $(this.el).html(this.template({
       title: "Take a photo of your water"
     }));
-    $(this.el).onload = this.snapPhoto;
     return this;
   },
   snapPhoto: function() {
@@ -37,7 +39,7 @@ window.WiserWater.CameraView = Backbone.View.extend({
     show = function() {
       $('#camera').hide();
       $('#loadingContainer').show();
-      return setTimeout(hide, 300);
+      return setTimeout(hide, 3000);
     };
     hide = function() {
       $('#loadingContainer').hide();
@@ -50,5 +52,10 @@ window.WiserWater.CameraView = Backbone.View.extend({
       show();
       return console.debug("showed loading");
     });
+  },
+  onInstructionClickOK: function() {
+    $('#photoInstructions').hide();
+    $('#camera').show();
+    return this.snapPhoto();
   }
 });
