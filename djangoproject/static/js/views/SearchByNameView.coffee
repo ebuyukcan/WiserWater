@@ -4,6 +4,14 @@ window.WiserWater.SearchByNameView = Backbone.View.extend
         @template = _.template WiserWater.tpl.get('searchname')
         return @
 
-    render: ->
-        $(@el).html @template
-        return @
+	    events:
+	       "click .searchMap" : "onSearchMapClick"
+
+	    render: ->
+	        $(@el).html @template
+	        return @
+
+
+	    onSearchMapClick: (args) ->
+	        args.preventDefault()
+	        WiserWater.app.renderSearchByMap()

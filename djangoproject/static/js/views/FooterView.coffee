@@ -6,6 +6,8 @@ window.WiserWater.FooterView = Backbone.View.extend
 
     events:
         "click .homeButton" : "onHomeClick"
+        "click .searchButton": "onSearchClick"
+        "click .profileButton": "onSearchClick"
 
     render: ->
         $(@el).html @template()
@@ -17,7 +19,7 @@ window.WiserWater.FooterView = Backbone.View.extend
 
      onSearchClick: (args) ->
         args.preventDefault()
-        WiserWater.app.renderSearch()
+        WiserWater.app.renderSearchByMap()
 
      onProfileClick: (args) ->
         args.preventDefault()
