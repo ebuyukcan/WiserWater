@@ -3,12 +3,13 @@ window.WiserWater.NewsItemView = Backbone.View.extend
     className: "listId";
 
     initialize: (options) ->
-        @template = _.template WiserWater.tpl.get('newsItem')
+        @template = _.template WiserWater.tpl.get('newsitem')
         console.debug options.model
         @news = options.model
         return @
 
     render: ->
-        console.debug @news.toJSON()
-        $(@el).html @template @news.toJSON()
+        #console.debug @news.toJSON()
+        #$(@el).html @template @news.toJSON()
+        $(@el).html @template()
         return @

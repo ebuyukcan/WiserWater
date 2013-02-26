@@ -4,14 +4,13 @@ window.WiserWater.NewsItemView = Backbone.View.extend({
   tagName: "li",
   className: "listId",
   initialize: function(options) {
-    this.template = _.template(WiserWater.tpl.get('newsItem'));
+    this.template = _.template(WiserWater.tpl.get('newsitem'));
     console.debug(options.model);
     this.news = options.model;
     return this;
   },
   render: function() {
-    console.debug(this.news.toJSON());
-    $(this.el).html(this.template(this.news.toJSON()));
+    $(this.el).html(this.template());
     return this;
   }
 });
