@@ -4,6 +4,8 @@ window.WiserWater.LakeView = Backbone.View.extend
         @template = _.template WiserWater.tpl.get('lake')
         return @
 
+
     render: ->
         $(@el).html @template()
         return @
+
