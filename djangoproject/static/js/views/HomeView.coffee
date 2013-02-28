@@ -21,11 +21,9 @@ window.WiserWater.HomeView = Backbone.View.extend
           success: (fetchedNews) ->
               self.userNews = fetchedNews
               self.renderUserNews()
-      navigator.geolocation.getCurrentPosition successCallback, errorCallback
-      @allLakes.fetch
-          success: (fetchedLakes) ->
-              self.nearbyLakes = fetchedLakes
-              self.renderNearbyLakes()
+      successHandler = (position) -> @successCallback(self, position)
+      navigator.geolocation.getCurrentPosition successHandler, errorCallback
+      
       return @
 
      renderUserLakes: ->
@@ -35,21 +33,15 @@ window.WiserWater.HomeView = Backbone.View.extend
       ), @
       $("#pinnedLakes").listview('refresh')
 
-    renderNearbyLakes: ->
-        console.debug "rendering nearby lakes"
-# I suppose this didnt get here because it is still getting the position at this point of the execution
-# For now we will be using static position and filter based on that
-        console.debug @currentPositionLongitude
-#LON 24.83643 
-#LAT 60.1910714
-        _.each @nearbyLakes.models, ((item) ->
-          console.debug item.getLocation().lon
-          console.debug item.getLocation().lat
-          if (item.getLocation().lon > 23 and item.getLocation().lon < 25) and (item.getLocation().lat > 60 and item.getLocation().lat < 61)
-            console.debug "IN"
-            lakeItemView = new window.WiserWater.LakeItemView(model: item)
-            $("#nearbyLakes").append lakeItemView.render().el
-        ), @
+    renderNearbyLakes: (self, position) ->
+        _.each self.nearbyLakes.models, ((item) ->
+            lonDelta = Math.abs(position.coords.longitude - item.getLocation().lon)
+            latDelta = Math.abs(position.coords.latitude - item.getLocation().lat)
+            if (lonDelta < 1 and latDelta < 1)
+              console.debug "IN"
+              lakeItemView = new window.WiserWater.LakeItemView(model: item)
+              $("#nearbyLakes").append lakeItemView.render().el
+        ), self
         $("#nearbyLakes").listview('refresh')
 
     renderUserNews: ->
@@ -63,14 +55,15 @@ window.WiserWater.HomeView = Backbone.View.extend
       console.debug args
       WiserWater.app.renderLake()
 
-    successCallback = (position) =>
+    successCallback = (self,position) =>
       console.debug "in successCallback"
       console.debug position
-      @currentPositionLon = position.coords.longitude
-      @currentPositionLat = position.coords.latitude
-      console.debug @currentPositionLon
-      console.debug @currentPositionLat
-
+      console.debug self
+      self.allLakes.fetch
+          success: (fetchedLakes) ->
+              self.nearbyLakes = fetchedLakes
+              self.renderNearbyLakes(self,position)
+      
     errorCallback = (error) ->
       console.debug "in errorcallback"
       console.debug error

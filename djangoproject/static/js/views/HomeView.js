@@ -18,7 +18,7 @@ window.WiserWater.HomeView = Backbone.View.extend({
     "click .lakeId": "onLakeClick"
   },
   render: function() {
-    var self;
+    var self, successHandler;
     self = this;
     $(this.el).html(this.template());
     this.userLakes.fetch({
@@ -33,13 +33,10 @@ window.WiserWater.HomeView = Backbone.View.extend({
         return self.renderUserNews();
       }
     });
-    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-    this.allLakes.fetch({
-      success: function(fetchedLakes) {
-        self.nearbyLakes = fetchedLakes;
-        return self.renderNearbyLakes();
-      }
-    });
+    successHandler = function(position) {
+      return this.successCallback(self, position);
+    };
+    navigator.geolocation.getCurrentPosition(successHandler, errorCallback);
     return this;
   },
   renderUserLakes: function() {
@@ -52,21 +49,19 @@ window.WiserWater.HomeView = Backbone.View.extend({
     }), this);
     return $("#pinnedLakes").listview('refresh');
   },
-  renderNearbyLakes: function() {
-    console.debug("rendering nearby lakes");
-    console.debug(this.currentPositionLongitude);
-    _.each(this.nearbyLakes.models, (function(item) {
-      var lakeItemView;
-      console.debug(item.getLocation().lon);
-      console.debug(item.getLocation().lat);
-      if ((item.getLocation().lon > 23 && item.getLocation().lon < 25) && (item.getLocation().lat > 60 && item.getLocation().lat < 61)) {
+  renderNearbyLakes: function(self, position) {
+    _.each(self.nearbyLakes.models, (function(item) {
+      var lakeItemView, latDelta, lonDelta;
+      lonDelta = Math.abs(position.coords.longitude - item.getLocation().lon);
+      latDelta = Math.abs(position.coords.latitude - item.getLocation().lat);
+      if (lonDelta < 1 && latDelta < 1) {
         console.debug("IN");
         lakeItemView = new window.WiserWater.LakeItemView({
           model: item
         });
         return $("#nearbyLakes").append(lakeItemView.render().el);
       }
-    }), this);
+    }), self);
     return $("#nearbyLakes").listview('refresh');
   },
   renderUserNews: function() {
@@ -83,13 +78,16 @@ window.WiserWater.HomeView = Backbone.View.extend({
     console.debug(args);
     return WiserWater.app.renderLake();
   }
-}, successCallback = function(position) {
+}, successCallback = function(self, position) {
   console.debug("in successCallback");
   console.debug(position);
-  _this.currentPositionLon = position.coords.longitude;
-  _this.currentPositionLat = position.coords.latitude;
-  console.debug(_this.currentPositionLon);
-  return console.debug(_this.currentPositionLat);
+  console.debug(self);
+  return self.allLakes.fetch({
+    success: function(fetchedLakes) {
+      self.nearbyLakes = fetchedLakes;
+      return self.renderNearbyLakes(self, position);
+    }
+  });
 }, errorCallback = function(error) {
   console.debug("in errorcallback");
   return console.debug(error);
