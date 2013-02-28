@@ -2,8 +2,6 @@ window.WiserWater.SearchByMapView = Backbone.View.extend
 
     initialize: (options) ->
         @template = _.template WiserWater.tpl.get('searchmap')
-#TODO change the url to get all lakes not just user lakes
-        console.debug "Loading lakes"
         @allLakes = new window.WiserWater.LakeCollection()
         return @
 
