@@ -21,7 +21,9 @@ AppRouter = Backbone.Router.extend({
   },
   renderHome: function() {
     console.debug("Rendering home");
-    this.setPage($("#content"), new WiserWater.HomeView());
+    this.setPage($("#content"), new WiserWater.HomeView({
+      el: $("#content")
+    }));
     return this;
   },
   renderInput: function() {
@@ -70,13 +72,12 @@ AppRouter = Backbone.Router.extend({
     this.setPage($("#content"), new WiserWater.OxygenView());
     return this;
   },
-  setPage: function(target, view, header, newsfeed, footer) {
+  setPage: function(target, view, header, footer) {
+    var newsfeed;
     if (header == null) {
       header = new WiserWater.HeaderView();
     }
-    if (newsfeed == null) {
-      newsfeed = new WiserWater.NewsfeedView();
-    }
+    newsfeed = new WiserWater.NewsfeedView();
     if (footer == null) {
       footer = new WiserWater.FooterView();
     }

@@ -28,7 +28,7 @@ AppRouter = Backbone.Router.extend
 
   renderHome: ->
     console.debug "Rendering home"
-    @setPage $("#content"), new WiserWater.HomeView()
+    @setPage $("#content"), new WiserWater.HomeView({el: $("#content")})
     return @
 
   renderInput: ->
@@ -78,10 +78,10 @@ AppRouter = Backbone.Router.extend
     @setPage $("#content"), new WiserWater.OxygenView()
     return @
 	
-  setPage: (target, view, header, newsfeed, footer) ->
+  setPage: (target, view, header, footer) ->
     # Changes the page using the backbone framework, no transitions
     header ?= new WiserWater.HeaderView()
-    newsfeed ?= new WiserWater.NewsfeedView()
+    newsfeed = new WiserWater.NewsfeedView()
     footer ?= new WiserWater.FooterView()
     $("#header").html(header.render().el).trigger("create")
     $("#newsfeed").html(newsfeed.render().el).trigger("create")

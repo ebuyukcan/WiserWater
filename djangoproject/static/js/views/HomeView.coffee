@@ -12,7 +12,7 @@ window.WiserWater.HomeView = Backbone.View.extend
 
     render: ->
       self = @
-      $(@el).html @template()	
+      @el = $(@template())	
       @userLakes.fetch
           success: (fetchedUserLakes) ->
               self.userLakes = fetchedUserLakes

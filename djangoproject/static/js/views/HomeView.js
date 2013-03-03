@@ -20,7 +20,7 @@ window.WiserWater.HomeView = Backbone.View.extend({
   render: function() {
     var self, successHandler;
     self = this;
-    $(this.el).html(this.template());
+    this.el = $(this.template());
     this.userLakes.fetch({
       success: function(fetchedUserLakes) {
         self.userLakes = fetchedUserLakes;
