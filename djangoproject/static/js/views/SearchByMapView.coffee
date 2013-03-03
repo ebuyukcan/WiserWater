@@ -10,7 +10,7 @@ window.WiserWater.SearchByMapView = Backbone.View.extend
 
     render: ->
       self = @
-      $(@el).html @template()
+      @el = $(@template())
       @allLakes.fetch
        success: (fetchedLakes) ->
               _.each self.allLakes.models, ((item) ->

@@ -5,7 +5,7 @@ window.WiserWater.ProfileView = Backbone.View.extend
         return @
 
     render: ->
-        $(@el).html @template
+        @el = $(@template())
         return @
 
     events:

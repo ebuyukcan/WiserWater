@@ -5,5 +5,5 @@ window.WiserWater.NewsfeedView = Backbone.View.extend
         return @
 
     render: ->
-        $(@el).html @template()
+        @el = $(@template())
         return @

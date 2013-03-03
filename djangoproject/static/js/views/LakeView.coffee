@@ -6,6 +6,6 @@ window.WiserWater.LakeView = Backbone.View.extend
 
 
     render: ->
-        $(@el).html @template()
+        @el = $(@template())
         return @
 

@@ -6,9 +6,9 @@ window.WiserWater.OxygenView = Backbone.View.extend({
     return this;
   },
   render: function() {
-    $(this.el).html(this.template({
+    this.el = $(this.template())({
       title: "Connect your oxygen sensor"
-    }));
+    });
     return this;
   }
 });

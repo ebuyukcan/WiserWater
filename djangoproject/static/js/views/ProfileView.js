@@ -6,7 +6,7 @@ window.WiserWater.ProfileView = Backbone.View.extend({
     return this;
   },
   render: function() {
-    $(this.el).html(this.template);
+    this.el = $(this.template());
     return this;
   },
   events: {

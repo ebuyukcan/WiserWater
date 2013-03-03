@@ -9,7 +9,7 @@ window.WiserWater.SearchByNameView = Backbone.View.extend({
     "click .searchMap": "onSearchMapClick"
   },
   render: function() {
-    $(this.el).html(this.template);
+    this.el = $(this.template());
     return this;
   },
   onSearchMapClick: function(args) {

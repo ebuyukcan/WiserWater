@@ -8,7 +8,7 @@ window.WiserWater.SearchByNameView = Backbone.View.extend
 	       "click .searchMap" : "onSearchMapClick"
 
 	    render: ->
-	        $(@el).html @template
+	        @el = $(@template())
 	        return @
 
 
