@@ -36,9 +36,22 @@ $("#articlesList").html i.render().el # Assumes that element with id #articlesLi
 # I believe this will insert: <li class="item">Hello</li> in the element #articlesList
 
 # Attaching the view to an EXISTING DOM
-var itemView1 = Backbone.View.extend ({ el: $(	), render: function() { $(this.el).html(	); return this; }
-});
-var i1 = new itemView1(); i1.render();
-var itemView2 = Backbone.View.extend ({ el: $(	), render: function() { $(this.el).html(	); return this; }
-});
-var i2 = new itemView2(); i2.render(); i2.$el.html(	); i1.render(); i2.render();
+itemView1 = Backbone.View.extend(
+  el: $()
+  render: ->
+    $(@el).html()
+    this
+)
+i1 = new itemView1()
+i1.render()
+itemView2 = Backbone.View.extend(
+  el: $()
+  render: ->
+    $(@el).html()
+    this
+)
+i2 = new itemView2()
+i2.render()
+i2.$el.html()
+i1.render()
+i2.render()
