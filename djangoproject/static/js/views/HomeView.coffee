@@ -12,7 +12,7 @@ window.WiserWater.HomeView = Backbone.View.extend
 
     render: ->
       self = @
-      @el = $(@template())	
+      @el = $(@template())
       # @$el.html @template 
       # it is the same as the line below
       # $(@el).html @template()	
