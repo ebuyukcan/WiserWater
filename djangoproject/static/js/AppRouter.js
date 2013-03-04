@@ -9,11 +9,11 @@ AppRouter = Backbone.Router.extend({
   },
   routes: {
     "": "renderHome",
-    "input": "renderInput",
-    "lake/:id": "renderLake",
-    "profile": "renderProfile",
-    "searchmap": "renderSearchByMap",
-    "searchname": "renderSearchByName",
+    "/input": "renderInput",
+    "/lake/:id": "renderLake",
+    "/profile": "renderProfile",
+    "/searchmap": "renderSearchByMap",
+    "/searchname": "renderSearchByName",
     "*other": "defaultRoute"
   },
   defaultRoute: function(other) {

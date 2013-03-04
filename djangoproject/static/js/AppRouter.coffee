@@ -1,5 +1,6 @@
 AppRouter = Backbone.Router.extend
   
+  # Don't seem to need the following
   initialize: ->
     @historyBack = false
     @pages = {}
@@ -10,14 +11,14 @@ AppRouter = Backbone.Router.extend
   # Sample usage: http://example.com/#input
   routes:
     "": "renderHome"
-    "input": "renderInput"
-    "lake/:id": "renderLake"
+    "/input": "renderInput"
+    "/lake/:id": "renderLake"
          # This is an example of using a ":param" variable which allows us to match
          # any of the components between two URL slashes 
          # Sample usage: http://example.com/#lake/5 
-    "profile": "renderProfile"
-    "searchmap": "renderSearchByMap"
-    "searchname": "renderSearchByName"
+    "/profile": "renderProfile"
+    "/searchmap": "renderSearchByMap"
+    "/searchname": "renderSearchByName"
     "*other": "defaultRoute"
          # This is a default route that also uses a *splat. Consider the
          # default route a wildcard for URLs that are either not matched or where
@@ -96,3 +97,5 @@ AppRouter = Backbone.Router.extend
         page.render
         $('body').append $(page.el)
         $.mobile.changePage $(page.el), {changeHash:false}
+
+# myAppRouter = new AppRouter
