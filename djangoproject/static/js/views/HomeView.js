@@ -74,15 +74,11 @@ window.WiserWater.HomeView = Backbone.View.extend({
     return $("#newsStream").append(newsItemView.render().el);
   },
   onLakeClick: function(args) {
-    console.debug("clicked on a lake");
     args.preventDefault();
     console.debug(args);
     return WiserWater.app.renderLake();
   }
 }, successCallback = function(self, position) {
-  console.debug("in successCallback");
-  console.debug(position);
-  console.debug(self);
   return self.allLakes.fetch({
     success: function(fetchedLakes) {
       self.nearbyLakes = fetchedLakes;

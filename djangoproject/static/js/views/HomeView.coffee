@@ -1,5 +1,5 @@
 window.WiserWater.HomeView = Backbone.View.extend
-
+  	
     initialize: (options) ->
         @template = _.template WiserWater.tpl.get('home')
         @userLakes = new window.WiserWater.UserLakeCollection({userId:11})
@@ -13,6 +13,9 @@ window.WiserWater.HomeView = Backbone.View.extend
     render: ->
       self = @
       @el = $(@template())	
+      # @$el.html @template 
+      # it is the same as the line below
+      # $(@el).html @template()	
       @userLakes.fetch
           success: (fetchedUserLakes) ->
               self.userLakes = fetchedUserLakes
@@ -50,16 +53,12 @@ window.WiserWater.HomeView = Backbone.View.extend
       $("#newsStream").append newsItemView.render().el
 
     onLakeClick: (args) ->
-      console.debug "clicked on a lake"
       args.preventDefault()
       console.debug args
       WiserWater.app.renderLake()
 
     successCallback = (self,position) =>
-      console.debug "in successCallback"
-      console.debug position
-      console.debug self
-      self.allLakes.fetch
+       self.allLakes.fetch
           success: (fetchedLakes) ->
               self.nearbyLakes = fetchedLakes
               self.renderNearbyLakes(self,position)
