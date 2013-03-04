@@ -34,13 +34,13 @@ window.WiserWater.HomeView = Backbone.View.extend
       $("#pinnedLakes").listview('refresh')
 
     renderNearbyLakes: (self, position) ->
-        _.each self.nearbyLakes.models, ((item) ->
-            lonDelta = Math.abs(position.coords.longitude - item.getLocation().lon)
-            latDelta = Math.abs(position.coords.latitude - item.getLocation().lat)
-            if (lonDelta < 1 and latDelta < 1)
-              console.debug "IN"
-              lakeItemView = new window.WiserWater.LakeItemView(model: item)
-              $("#nearbyLakes").append lakeItemView.render().el
+        _.each self.nearbyLakes.models, ((item,index) ->
+          lonDelta = Math.abs(position.coords.longitude - item.getLocation().lon)
+          latDelta = Math.abs(position.coords.latitude - item.getLocation().lat)
+          if(lonDelta < 1 and latDelta < 1)
+              if (index is 7 or index is 8 or index is 9)
+                lakeItemView = new window.WiserWater.LakeItemView(model: item)
+                $("#nearbyLakes").append lakeItemView.render().el
         ), self
         $("#nearbyLakes").listview('refresh')
 

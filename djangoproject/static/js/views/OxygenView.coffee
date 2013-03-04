@@ -8,8 +8,9 @@ window.WiserWater.OxygenView = Backbone.View.extend
         #"click .testAgain" : "onTestAgainClick"
 
     render: ->
-        @el = $(@template())
-          title: "Connect your oxygen sensor"
+        #@el = $(@template())
+        $(@el).html @template()
+ #         title: "Connect your oxygen sensor"
         return @
 
 #    onTestAgainClick: (args) ->
