@@ -83,10 +83,8 @@ AppRouter = Backbone.Router.extend
   setPage: (target, view, header, footer) ->
     # Changes the page using the backbone framework, no transitions
     header ?= new WiserWater.HeaderView()
-    newsfeed = new WiserWater.NewsfeedView()
     footer ?= new WiserWater.FooterView()
     $("#header").html(header.render().el).trigger("create")
-    $("#newsfeed").html(newsfeed.render().el).trigger("create")
     $("#footer").html(footer.render().el).trigger("create")
     if view?
       target.html $(view.render().el)

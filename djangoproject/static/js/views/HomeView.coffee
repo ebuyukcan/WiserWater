@@ -20,6 +20,7 @@ window.WiserWater.HomeView = Backbone.View.extend
       @userNews.fetch
           success: (fetchedNews) ->
               self.userNews = fetchedNews
+              console.debug self.userNews
               self.renderUserNews()
       successHandler = (position) -> @successCallback(self, position)
       navigator.geolocation.getCurrentPosition successHandler, errorCallback
@@ -51,9 +52,11 @@ window.WiserWater.HomeView = Backbone.View.extend
         $("#nearbyLakes").listview('refresh')
 
     renderUserNews: ->
-      item = @userNews.models[0]
-      newsItemView = new window.WiserWater.NewsItemView(model: item)
-      $("#newsStream").append newsItemView.render().el
+      _.each @userNews.models, ((item) ->
+          newsItemView = new window.WiserWater.NewsItemView(model: item)
+          $("#newsStream").append newsItemView.render().el
+      ), @
+  #    $("#newsStream").listview('refresh')
 
     successCallback = (self,position) =>
        self.allLakes.fetch
