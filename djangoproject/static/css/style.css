@@ -1,7 +1,16 @@
-body, h3 {
+body, h3, h1 {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	font-weight: 300;
 	line-height: 140%;
+}
+
+h1 {
+	padding: 20px 0px 10px 0px;	
+}
+
+h1 em {
+	font-size: 20pt;
+	font-style: normal;
 }
 
 h3 {
@@ -66,7 +75,7 @@ footer h6{
 /* end of header styling */
 
 .veryClean, .clean, .polluted, .veryPolluted {
-	font-weight: bold;
+	
 }
 
 .veryClean {
