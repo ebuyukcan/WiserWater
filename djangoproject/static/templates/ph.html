@@ -1,0 +1,16 @@
+<div id="phInstructions" class="ui-content" data-role="content" data-add-back-btn="true">
+	<div id="instructionText">
+		<p>1. Follow the instructions on your pH measuring kit.</p>
+		<p>2. Enter your result.</p><br/>
+	</div>
+	<label for="number-pattern">Your pH result was:</label>
+	<input placeholder="number between 1 and 14" type="number" name="number" pattern="[0-9]*" id="phValue" value="">
+	<button id="submitpH">Go</button>
+</div>
+
+<div id="loadingContainer" style="display:none;">
+	<div id="loading">
+		<img id="loadingIcon" src="../../static/img/ajax-loader.gif"/>
+	</div>
+</div> 
+
