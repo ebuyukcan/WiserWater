@@ -12,7 +12,7 @@ AppRouter = Backbone.Router.extend
   routes:
     "": "renderHome"
     "/input": "renderInput"
-    "/lake/:id": "renderLake"
+    "/lake": "renderLake"
          # This is an example of using a ":param" variable which allows us to match
          # any of the components between two URL slashes 
          # Sample usage: http://example.com/#lake/5 
@@ -40,12 +40,8 @@ AppRouter = Backbone.Router.extend
   renderNavigate: ->
     console.debug "Rendering navigate"
 
-  renderLake: (id) ->
-        # Note that the id matched in the above route will be passed to this function
-    console.debug "Rendering lake view"
-    console.debug "You are trying to reach lake " + id
-    #if not lakeId
-    @setPage $("#content"), new WiserWater.LakeView()
+  renderLake: (item) ->
+    @setPage $("#content"), new WiserWater.LakeView(item)
     return@
     
   renderProfile: ->
