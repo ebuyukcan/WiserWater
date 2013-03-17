@@ -47,11 +47,12 @@ window.WiserWater.ProfileView = Backbone.View.extend({
     return $("#pinnedLakes").listview('refresh');
   },
   renderUserNews: function() {
-    var item, newsItemView;
-    item = this.userNews.models[0];
-    newsItemView = new window.WiserWater.NewsItemView({
-      model: item
-    });
-    return $("#newsStream").append(newsItemView.render().el);
+    return _.each(this.userNews.models, (function(item) {
+      var newsItemView;
+      newsItemView = new window.WiserWater.NewsItemView({
+        model: item
+      });
+      return $("#newsStream").append(newsItemView.render().el);
+    }), this);
   }
 });

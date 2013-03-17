@@ -33,7 +33,10 @@ window.WiserWater.ProfileView = Backbone.View.extend
       ), @
       $("#pinnedLakes").listview('refresh')
 
+
     renderUserNews: ->
-      item = @userNews.models[0]
-      newsItemView = new window.WiserWater.NewsItemView(model: item)
-      $("#newsStream").append newsItemView.render().el
+      _.each @userNews.models, ((item) ->
+          newsItemView = new window.WiserWater.NewsItemView(model: item)
+          $("#newsStream").append newsItemView.render().el
+      ), @
+  #    $("#newsStream").listview('refresh')
