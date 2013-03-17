@@ -72,6 +72,11 @@ AppRouter = Backbone.Router.extend({
     this.setPage($("#content"), new WiserWater.OxygenView());
     return this;
   },
+  renderPh: function() {
+    console.debug("Rendering pH");
+    this.setPage($("#content"), new WiserWater.pHView());
+    return this;
+  },
   setPage: function(target, view, header, footer) {
     var newsfeed;
     if (header == null) {

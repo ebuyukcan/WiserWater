@@ -1,19 +1,14 @@
-<div class="content" data-role="content" data-add-back-btn="true">
-  <h3>OXYGEN</h3>  
-  <p>1. Turn on the oxygen sensor and submerge the wand in the water [when oxygen sensor is connected via bluetooth and water is sensed]
-Measuring...</p>
-  <img src="../../static/img/ajax-loader.gif"/>
-  </br>
-  <a href="#popupBasic" data-rel="popup">READY</a>
-
- <div data-role="popup" id="popupBasic">
-    <p>Your oxygen measurement was 5.0 mg/l, therefore the water is </br>
-       POLLUTED! </p>
-    <a href="#" data-role="button" data-rel="back" data-transition="pop" data-direction="reverse">
-      <span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true">
-        <span class="ui-btn-text">Test Again</span>
-      </span>
-    </a>
- </div>
-
+<div id="oxygenInstructions" class="ui-content" data-role="content" data-add-back-btn="true">
+	<h3>Measuring Dissolved Oxygen</h3> 
+	<div id="instructionText">
+		<p>Turn on the oxygen sensor and submerge the wand in the water.</p><br/>
+		<button id="oxygenReady">Ready</button>
+	</div>
 </div>
+
+<div id="loadingContainer" style="display:none;">
+	<div id="loading">
+		<img id="loadingIcon" src="../../static/img/ajax-loader.gif"/>
+	</div>
+</div> 
+

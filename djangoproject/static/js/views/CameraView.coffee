@@ -11,9 +11,9 @@ window.WiserWater.CameraView = Backbone.View.extend
         $(@el).html @template
             title: "Take a photo of your water"
         return @
-		
+
     snapPhoto: ->
-	    # Put event listeners into place
+        # Put event listeners into place
         canvas = document.getElementById("canvas")
         context = canvas.getContext("2d")
         video = document.getElementById("video")

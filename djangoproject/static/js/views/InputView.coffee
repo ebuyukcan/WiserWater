@@ -19,11 +19,11 @@ window.WiserWater.InputView = Backbone.View.extend
     onCameraPressed: (args) ->
         args.preventDefault()
         WiserWater.app.renderCamera()
-		
+
     onPhPressed: (args) ->
         args.preventDefault()
         WiserWater.app.renderPh()
-		
+
     onOxygenPressed: (args) ->
         args.preventDefault()
         WiserWater.app.renderOxygen()
