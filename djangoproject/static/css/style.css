@@ -28,7 +28,7 @@ footer h6 {
 
 .footerLinks a {
 	text-align: left;
-	font-size: 14pt;
+	font-size: 14pt !important;
 	margin: 0px;
 	padding: 0px 5px;
 }
@@ -124,6 +124,11 @@ footer h6 {
 
 .newsStream {
 	text-align: center;
+}
+
+.ui-btn-up-c {
+	border: none;
+	background: none;
 }
 
 /* Custom styling for .inputOptions grid */
