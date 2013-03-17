@@ -1,22 +1,22 @@
-window.WiserWater.OxygenView = Backbone.View.extend
+window.WiserWater.pHView = Backbone.View.extend
 
     initialize: (options) ->
-        @template = _.template WiserWater.tpl.get('oxygen')
+        @template = _.template WiserWater.tpl.get('ph')
         return @
 
     events:
-        "click #oxygenReady" : "onOxygenReady"
+        "click #submitpH": "onSubmitpH"
 
     render: ->
         $(@el).html @template
-            title: "Measuring Dissolved Oxygen"
+            title: "Measuring pH"
         return @
 
-    onOxygenReady: ->
+    onSubmitpH: ->
         showFeedback= ->
             $('#loadingContainer').hide()
             WiserWater.app.renderFeedback()
-        console.debug "in oxygenReady"
-        $('#oxygenInstructions').hide()
+        console.debug "in onsubmitph"
+        $('#phInstructions').hide()
         $('#loadingContainer').show()
         setTimeout showFeedback, 3000

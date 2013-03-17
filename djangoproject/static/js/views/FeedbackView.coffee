@@ -13,7 +13,7 @@ window.WiserWater.FeedbackView = Backbone.View.extend
             title: "Measurement results"
         $(@el).onload = @detachCamera
         return @
-		
+
     detachCamera: ->
         $("#snap").unbind "click"
 

@@ -13,6 +13,8 @@ v1_api = Api(api_name='v1')
 v1_api.register(LakeResource())
 v1_api.register(RegionResource())
 v1_api.register(NewsResource())
+v1_api.register(LakePhResource())
+v1_api.register(UserResource())
 
 urlpatterns = patterns('',
     # Examples:
