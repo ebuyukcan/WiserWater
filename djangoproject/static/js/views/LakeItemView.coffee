@@ -4,11 +4,16 @@ window.WiserWater.LakeItemView = Backbone.View.extend
 
     initialize: (options) ->
         @template = _.template WiserWater.tpl.get('lakeitem')
-        console.debug options.model
         @lake = options.model
         return @
 
+    events: ->
+        "click" : "onClickLoadLakePage"
+
     render: ->
-        console.debug @lake.toJSON()
         $(@el).html @template @lake.toJSON()
         return @
+
+    onClickLoadLakePage: (args) ->
+      args.preventDefault()
+      WiserWater.app.renderLake(@lake)

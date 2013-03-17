@@ -10,7 +10,7 @@ AppRouter = Backbone.Router.extend({
   routes: {
     "": "renderHome",
     "/input": "renderInput",
-    "/lake/:id": "renderLake",
+    "/lake": "renderLake",
     "/profile": "renderProfile",
     "/searchmap": "renderSearchByMap",
     "/searchname": "renderSearchByName",
@@ -34,10 +34,8 @@ AppRouter = Backbone.Router.extend({
   renderNavigate: function() {
     return console.debug("Rendering navigate");
   },
-  renderLake: function(id) {
-    console.debug("Rendering lake view");
-    console.debug("You are trying to reach lake " + id);
-    this.setPage($("#content"), new WiserWater.LakeView());
+  renderLake: function(item) {
+    this.setPage($("#content"), new WiserWater.LakeView(item));
     return this;
   },
   renderProfile: function() {

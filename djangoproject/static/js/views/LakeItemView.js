@@ -5,13 +5,20 @@ window.WiserWater.LakeItemView = Backbone.View.extend({
   className: "lakeId",
   initialize: function(options) {
     this.template = _.template(WiserWater.tpl.get('lakeitem'));
-    console.debug(options.model);
     this.lake = options.model;
     return this;
   },
+  events: function() {
+    return {
+      "click": "onClickLoadLakePage"
+    };
+  },
   render: function() {
-    console.debug(this.lake.toJSON());
     $(this.el).html(this.template(this.lake.toJSON()));
     return this;
+  },
+  onClickLoadLakePage: function(args) {
+    args.preventDefault();
+    return WiserWater.app.renderLake(this.lake);
   }
 });
