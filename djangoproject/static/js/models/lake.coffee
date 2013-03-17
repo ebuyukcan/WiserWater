@@ -15,6 +15,9 @@ window.WiserWater.LakeModel = Backbone.Model.extend
             lon: @attributes["longitude"]
         }
 
+    getRegion: ->
+        return @attributes["region"]
+
 window.WiserWater.LakeCollection = Backbone.Collection.extend
     model: WiserWater.LakeModel
     url: "/api/v1/lake/?format=json"
