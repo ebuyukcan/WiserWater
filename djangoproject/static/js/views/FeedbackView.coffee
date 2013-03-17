@@ -10,23 +10,20 @@ window.WiserWater.FeedbackView = Backbone.View.extend
         "click .testAgain" : "onTestAgainClick"
 
     render: ->
-        $(@el).html @template
-            title: "Measurement results"
-        console.log 'feedback.coffee ' + @cleanliness
+        dom = $(@template(title: "Measurement results"))
         if @cleanliness is "very_clean"
-            $("#veryCleanImg").show
-            $("#cleanlinessText").text 'very clean'
+            dom.find("#veryCleanImg").css "display", "inline"
+            dom.find("#cleanlinessText").text "very clean"
         else if @cleanliness is "dirty"
-            $("#dirtyImg").show
-            $("#cleanlinessText").text 'dirty'
+            dom.find("#dirtyImg").css "display", "inline"
+            dom.find("#cleanlinessText").text "dirty"
         else if @cleanliness is "very_dirty"
-            $("#veryDirtyImg").show
-            console.log $("#cleanlinessText").text()
-            $("#cleanlinessText").text 'very dirty'
-            console.log 'veryDirtyImg' + $("#cleanlinessText").text()
+            dom.find("#veryDirtyImg").css 'display', 'inline'
+            dom.find("#cleanlinessText").text "very dirty"
         else
-            $("#cleanImg").show
-            $("#cleanlinessText").text 'clean'
+            dom.find("#cleanImg").css "display", "inline"
+            dom.find("#cleanlinessText").text "clean"
+        $(@el).html dom.html()
         $(@el).onload = @detachCamera
         return @
 
