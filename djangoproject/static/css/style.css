@@ -1,4 +1,4 @@
-body, h3, h1 {
+body, h3, h1, a, .footerLinks a {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	font-weight: 300;
 	line-height: 140%;
@@ -14,18 +14,28 @@ h1 em {
 }
 
 h3 {
-	text-transform:uppercase;
-	text-align:center;
-	font-size:10pt;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 10pt;
 	padding: 20px 0px 10px 0px;	
 }
 
-footer h6{
+footer h6 {
 	text-align: center;
 	font-weight:300;
+	padding: 5px 0px;	
 }
 
+footer {
+	font-size: 26pt;
+}
 
+.footerLinks a {
+	text-align: left;
+	font-size: 14pt;
+	margin: 0px;
+	padding: 0px 5px;
+}
 
 .center-wrapper {
 	margin: 0 auto;
