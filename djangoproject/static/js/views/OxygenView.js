@@ -5,8 +5,24 @@ window.WiserWater.OxygenView = Backbone.View.extend({
     this.template = _.template(WiserWater.tpl.get('oxygen'));
     return this;
   },
+  events: {
+    "click #oxygenReady": "onOxygenReady"
+  },
   render: function() {
-    $(this.el).html(this.template());
+    $(this.el).html(this.template({
+      title: "Measuring Dissolved Oxygen"
+    }));
     return this;
+  },
+  onOxygenReady: function() {
+    var showFeedback;
+    showFeedback = function() {
+      $('#loadingContainer').hide();
+      return WiserWater.app.renderFeedback();
+    };
+    console.debug("in oxygenReady");
+    $('#oxygenInstructions').hide();
+    $('#loadingContainer').show();
+    return setTimeout(showFeedback, 3000);
   }
 });

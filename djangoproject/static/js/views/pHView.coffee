@@ -9,7 +9,7 @@ window.WiserWater.pHView = Backbone.View.extend
 
     render: ->
         $(@el).html @template
-            title: "Measure the pH"
+            title: "Measuring pH"
         return @
 
     onSubmitpH: ->

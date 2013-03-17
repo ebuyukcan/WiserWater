@@ -4,16 +4,19 @@ window.WiserWater.OxygenView = Backbone.View.extend
         @template = _.template WiserWater.tpl.get('oxygen')
         return @
 
-    #events:
-        #"click .testAgain" : "onTestAgainClick"
+    events:
+        "click #oxygenReady" : "onOxygenReady"
 
     render: ->
-        #@el = $(@template())
-        $(@el).html @template()
- #         title: "Connect your oxygen sensor"
+        $(@el).html @template
+            title: "Measuring Dissolved Oxygen"
         return @
 
-#    onTestAgainClick: (args) ->
-      #args.preventDefault()
-      #WiserWater.app.renderProfile()
-          
+    onOxygenReady: ->
+        showFeedback= ->
+            $('#loadingContainer').hide()
+            WiserWater.app.renderFeedback()
+        console.debug "in oxygenReady"
+        $('#oxygenInstructions').hide()
+        $('#loadingContainer').show()
+        setTimeout showFeedback, 3000

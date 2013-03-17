@@ -10,7 +10,7 @@ window.WiserWater.pHView = Backbone.View.extend({
   },
   render: function() {
     $(this.el).html(this.template({
-      title: "Measure the pH"
+      title: "Measuring pH"
     }));
     return this;
   },
