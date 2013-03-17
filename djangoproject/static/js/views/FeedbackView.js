@@ -3,6 +3,7 @@
 window.WiserWater.FeedbackView = Backbone.View.extend({
   initialize: function(options) {
     this.template = _.template(WiserWater.tpl.get('feedback'));
+    this.cleanliness = options.cleanliness;
     return this;
   },
   events: {
@@ -13,6 +14,22 @@ window.WiserWater.FeedbackView = Backbone.View.extend({
     $(this.el).html(this.template({
       title: "Measurement results"
     }));
+    console.log('feedback.coffee ' + this.cleanliness);
+    if (this.cleanliness === "very_clean") {
+      $("#veryCleanImg").show;
+      $("#cleanlinessText").text('very clean');
+    } else if (this.cleanliness === "dirty") {
+      $("#dirtyImg").show;
+      $("#cleanlinessText").text('dirty');
+    } else if (this.cleanliness === "very_dirty") {
+      $("#veryDirtyImg").show;
+      console.log($("#cleanlinessText").text());
+      $("#cleanlinessText").text('very dirty');
+      console.log('veryDirtyImg' + $("#cleanlinessText").text());
+    } else {
+      $("#cleanImg").show;
+      $("#cleanlinessText").text('clean');
+    }
     $(this.el).onload = this.detachCamera;
     return this;
   },

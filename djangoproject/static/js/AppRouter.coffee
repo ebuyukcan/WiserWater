@@ -65,9 +65,9 @@ AppRouter = Backbone.Router.extend
     view.snapPhoto()
     return @
 	
-  renderFeedback: ->
-    console.debug "Rendering feedback"
-    @setPage $("#content"), new WiserWater.FeedbackView()
+  renderFeedback: (cleanliness) ->
+    console.debug "Rendering feedback" + cleanliness
+    @setPage $("#content"), new WiserWater.FeedbackView({cleanliness: cleanliness})
     return @
 
   renderOxygen: ->

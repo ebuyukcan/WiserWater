@@ -15,12 +15,37 @@ window.WiserWater.pHView = Backbone.View.extend({
     return this;
   },
   onSubmitpH: function() {
-    var showFeedback;
+    var cleanliness, phInput, showFeedback, val;
+    cleanliness = "very_clean";
+    console.debug("in onsubmitph");
+    val = $(this.el).find("input#phValue").val();
+    phInput = new window.WiserWater.LakePhModel({
+      userId: 11,
+      lakeId: 1,
+      value: val
+    });
+    console.log('calling save()');
+    phInput.save({
+      field1: 'test'
+    }, {
+      wait: true,
+      success: function(model, response) {
+        var data;
+        console.log('response came');
+        console.log(response.responseText);
+        data = jQuery.parseJSON(response);
+        cleanliness = data.result;
+        return console.log('success ' + cleanliness);
+      },
+      error: function() {
+        return console.log("error");
+      }
+    });
     showFeedback = function() {
       $('#loadingContainer').hide();
-      return WiserWater.app.renderFeedback();
+      console.log('showfeedback' + cleanliness);
+      return WiserWater.app.renderFeedback(cleanliness);
     };
-    console.debug("in onsubmitph");
     $('#phInstructions').hide();
     $('#loadingContainer').show();
     return setTimeout(showFeedback, 3000);

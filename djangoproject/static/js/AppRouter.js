@@ -60,9 +60,11 @@ AppRouter = Backbone.Router.extend({
     view.snapPhoto();
     return this;
   },
-  renderFeedback: function() {
-    console.debug("Rendering feedback");
-    this.setPage($("#content"), new WiserWater.FeedbackView());
+  renderFeedback: function(cleanliness) {
+    console.debug("Rendering feedback" + cleanliness);
+    this.setPage($("#content"), new WiserWater.FeedbackView({
+      cleanliness: cleanliness
+    }));
     return this;
   },
   renderOxygen: function() {

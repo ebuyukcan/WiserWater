@@ -2,11 +2,14 @@
 	<h1>Thank you for your measurement!</h1>
 	
 	<div class="center-wrapper">
-		<img src="../../static/img/dial_veryClean.png" height="150"/>
+		<img id="cleanImg" style="display:none;" src="../../static/img/dial_Clean.png" height="150"/>
+		<img id="veryCleanImg" style="display:none;" src="../../static/img/dial_veryClean.png" height="150"/>
+		<img id="dirtyImg" style="display:none;" src="../../static/img/dial_polluted.png" height="150"/>
+		<img id="veryDirtyImg" style="display:none;" src="../../static/img/dial_veryPolluted.png" height="150"/>
 	</div>
 	<div id="cleanlinessMessage" class="cleanliness">
 		Your photo indicates that the lake is
-		<span class="veryClean">very clean</span>
+		<span id="cleanlinessText" class="veryClean">very clean</span>
 	</div>
 </div>
 

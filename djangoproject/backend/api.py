@@ -121,7 +121,10 @@ class LakePhResource(BackboneModelResource):
         try:
             userName = userObject.name
         except AttributeError:
-            userName = "A user"
+            try:
+                userName = userObject.firstName
+            except AttributeError:
+                userName = "A user"
         
         # Create the lake
         LakePh.create(lakeObject, userObject, phInput)
@@ -129,16 +132,10 @@ class LakePhResource(BackboneModelResource):
         #Create news item
         LakeNews.create(lakeObject, userObject, '%s measured PH level of %s' % (userName, lakeObject.name))
         
-        print phInput
         result = "very_clean" # Result of measurement is defaulted to 'very_clean'
         desiredPh = Decimal(7.0)
         phChangeInterval = Decimal(0.2)
-        print abs(Decimal(phInput) - desiredPh)
-        print phChangeInterval
         phDifference = abs(Decimal(phInput) - desiredPh) / phChangeInterval
-        print phDifference
-        # print phDifference >= 1.0
-        # print abs(phDifference - 1.0)
         
         if phDifference.compare(Decimal(3.0)) == 1:
             result = "very_dirty"
