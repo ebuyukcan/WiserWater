@@ -18,7 +18,7 @@ window.WiserWater.SearchByMapView = Backbone.View.extend
                         console.debug "clicked on a lake"
                         # args.preventDefault()
                         console.debug args
-                        WiserWater.app.renderLake()
+                        WiserWater.app.renderLake(item)
                       lakePosition = new google.maps.LatLng(item.getLocation().lat, item.getLocation().lon)
                       $("#map_canvas").gmap("addMarker",
                         position: lakePosition
