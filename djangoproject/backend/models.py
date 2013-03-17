@@ -20,10 +20,15 @@ class Lake(models.Model):
 
 
 class LakePh(models.Model):
-	lake = models.ForeignKey(Lake)
-	user = models.ForeignKey(User)
-	date = models.DateTimeField(default=datetime.datetime.now)
-	value = models.FloatField()
+    lake = models.ForeignKey(Lake)
+    user = models.ForeignKey(User)
+    date = models.DateTimeField(default=datetime.datetime.now)
+    value = models.FloatField()
+    
+    @classmethod
+    def create(cls, lakeObject, userObject, value):
+        lakePh = cls(lake=lakeObject, user=userObject,value=value)
+        return lakePh
 
 class LakeOxygen(models.Model):
 	lake = models.ForeignKey(Lake)
@@ -42,6 +47,12 @@ class LakeNews(models.Model):
     lake = models.ForeignKey(Lake)
     content = models.TextField()
     date = models.DateTimeField(default=datetime.datetime.now)
+    
+    @classmethod
+    def create(cls, lakeObject, userObject, content):
+        lakeNews = cls(lake=lakeObject, user=userObject,content=content)
+        print lakeNews.content
+        return lakeNews
 
 class UserProfile(models.Model):  
     user = models.OneToOneField(User)
