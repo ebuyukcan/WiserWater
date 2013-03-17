@@ -25,6 +25,8 @@ footer h6{
 	font-weight:300;
 }
 
+
+
 .center-wrapper {
 	margin: 0 auto;
 	margin-left: auto;
@@ -108,7 +110,6 @@ footer h6{
  
 #loadingContainer, #photoInstructions {
     height: 400px;
-    background-color:rgba(0,0,0,0.5);
     text-align: center;
 }
 #loadingIcon{
@@ -164,7 +165,7 @@ footer h6{
 }
 
 .inputOptions .ui-icon {
-    width: 100px !important; 
+    width: 100px !important;
 	height: 83px !important;
 	background-image: url("../img/inputOption_oxygen_100x83.png");
 }

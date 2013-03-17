@@ -20,7 +20,7 @@ window.WiserWater.SearchByMapView = Backbone.View.extend({
           goToLake = function(args) {
             console.debug("clicked on a lake");
             console.debug(args);
-            return WiserWater.app.renderLake();
+            return WiserWater.app.renderLake(item);
           };
           lakePosition = new google.maps.LatLng(item.getLocation().lat, item.getLocation().lon);
           return $("#map_canvas").gmap("addMarker", {
