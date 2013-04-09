@@ -1,16 +1,12 @@
-<div class="content" data-role="content" data-add-back-btn="true">
-<div data-role="navbar">
-	<ul>
-		<li><a href="#" class="searchMap" data-transition="slide">Map</a></li>
-		<li><a href="#" class="ui-btn-active ui-state-persist" data-transition="slide">Name</a></li>
-	</ul>
-</div>
-<div>
-	<ul data-role="listview" data-inset="true" data-filter="true">
-  		<li class="lakeId">Item A</li>	
-		<li class="lakeId">Item B1</li>
-		<li class="lakeId">Item B2</li>
-		<li class="lakeId">Item B3</li>
-	</ul>
-</div>
+<div class="content ui-content" data-role="content">
+	<div data-role="navbar">
+		<ul>
+			<li class="searchMap"><a href="#" data-transition="slide">Map</a></li>
+			<li><a href="#" class="ui-btn-active ui-state-persist" data-transition="slide">Name</a></li>
+		</ul>
+	</div>
+	<div>
+		<ul id="lakeList" data-role="listview" data-inset="true" data-filter="true">
+		</ul>
+	</div>
 </div>

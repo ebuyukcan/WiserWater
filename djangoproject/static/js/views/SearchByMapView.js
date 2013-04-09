@@ -12,7 +12,7 @@ window.WiserWater.SearchByMapView = Backbone.View.extend({
   render: function() {
     var self;
     self = this;
-    this.el = $(this.template());
+    $(this.el).html(this.template());
     this.allLakes.fetch({
       success: function(fetchedLakes) {
         return _.each(self.allLakes.models, (function(item) {

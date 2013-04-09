@@ -7,7 +7,7 @@ window.WiserWater.LakeModel = Backbone.Model.extend
         @url = "/api/v1/lake/" + encodeURIComponent(@id) + "/?format=json"
 
     getId: ->
-        return @id
+        return @attributes["id"]
 
     getName: ->
         return @attributes["name"]

@@ -7,7 +7,7 @@ window.WiserWater.LakeModel = Backbone.Model.extend({
     return this.url = "/api/v1/lake/" + encodeURIComponent(this.id) + "/?format=json";
   },
   getId: function() {
-    return this.id;
+    return this.attributes["id"];
   },
   getName: function() {
     return this.attributes["name"];

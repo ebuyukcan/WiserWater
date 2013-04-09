@@ -3,13 +3,26 @@
 window.WiserWater.SearchByNameView = Backbone.View.extend({
   initialize: function(options) {
     this.template = _.template(WiserWater.tpl.get('searchname'));
+    this.allLakes = new window.WiserWater.LakeCollection();
     return this;
   },
   events: {
     "click .searchMap": "onSearchMapClick"
   },
   render: function() {
-    this.el = $(this.template());
+    var self;
+    self = this;
+    $(this.el).html(this.template());
+    this.allLakes.fetch({
+      success: function(fetchedLakes) {
+        return _.each(self.allLakes.models, (function(item) {
+          $("#lakeList").append("<li class=\"lakeId\" id=\"lake" + item.getId() + "\">" + item.getName() + "</li>");
+          return $("#lake" + item.getId() + "").click(function() {
+            return WiserWater.app.renderLake(item);
+          });
+        }), this);
+      }
+    });
     return this;
   },
   onSearchMapClick: function(args) {
